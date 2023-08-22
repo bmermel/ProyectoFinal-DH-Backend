@@ -19,7 +19,7 @@ public class OdontologoH2 implements ModeloDAO {
 
 
     @Override
-    public Boolean crearOdontologo(Object o) {
+    public Boolean guardar(Object o) {
         Odontologo odontologo = (Odontologo) o;
         Connection conexion = null;
         PreparedStatement pstmt = null;
@@ -41,8 +41,8 @@ public class OdontologoH2 implements ModeloDAO {
         }
     }
 
-    @Override
-    public List<OdontologoDTO> listarTodos() {
+
+    public List<Odontologo> listarTodos() {
         List<Odontologo> odontologosList = new ArrayList<>();
         Connection conexion = null;
         PreparedStatement pstmt = null;
@@ -55,28 +55,43 @@ public class OdontologoH2 implements ModeloDAO {
                 int matricula = rs.getInt("MATRICULA");
                 String nombre = rs.getString("NOMBRE");
                 String apellido = rs.getString("APELLIDO");
-                Odontologo odontologo = new Odontologo();
+                //P R E G U N T A R
+                // Usamos Odontologo u OdontologoDTO?
+                Odontologo odontologo = new Odontologo(matricula,nombre,apellido);
+                odontologosList.add(odontologo);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-
+        return odontologosList;
     }
 
-    @Override
-    public Boolean listarOdontologos(int id) {
+
+    public Boolean listar(int id) {
         return null;
     }
 
-    @Override
-    public Boolean actualizarOdontologo(int id) {
-        return null;
+
+    public Boolean actualizar(int id) {
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+
+        try {
+            Class.forName(DB_JDBC_DRIVER);
+            conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+            pstmt = conexion.prepareStatement(SQLQueries.ACTUALIZAR_ODONTOLOGO);
+            pstmt.setString();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Override
-    public Boolean borrarOdontologo(int id) {
+
+    public Boolean borrar(int id) {
         return null;
     }
 }
