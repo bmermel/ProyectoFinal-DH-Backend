@@ -5,6 +5,7 @@ import com.digitalhouse.proyectoFinal.Modelo.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -16,9 +17,16 @@ public class PacienteService {
     public PacienteService(ModeloDAO<Paciente> pacienteModeloDAO) {
         this.pacienteModeloDAO = pacienteModeloDAO;
     }
-    public Paciente guardar(Paciente p) {
+    public Boolean guardar(Paciente p) {
         //p.setFechaIngreso(new Date());
-        //return pacienteModeloDAO.guardar(p);
+        if (p!= null){
+            p.setFechaAlta(LocalDate.now());
+            pacienteModeloDAO.guardar(p);
+            System.out.println("paciente guardado");
+            return true;
+        }else
+        {return false;}
+
     }
     public Paciente listar(Integer id) {
         return pacienteModeloDAO.buscar(id);
@@ -32,7 +40,9 @@ public class PacienteService {
         pacienteModeloDAO.eliminar(id);
     }
 
-    public Paciente actualizar(Paciente p) {
-        return pacienteModeloDAO.actualizar(p);
+    public Boolean actualizar(Paciente p) {
+        return null;
+                //pacienteModeloDAO.actualizar(p);
+
     }
 }
