@@ -38,17 +38,17 @@ public class ModeloH2 implements ModeloDAO {
     }
 
     @Override
-    public Boolean listarOdontologos(int id) {
+    public Boolean listar(int id) {
         return null;
     }
 
     @Override
-    public Boolean actualizarOdontologo(int id) {
+    public Boolean actualizar(int id) {
         return null;
     }
 
     @Override
-    public Boolean borrarOdontologo(int id) {
+    public Boolean borrar(int id) {
         return null;
     }
 }
