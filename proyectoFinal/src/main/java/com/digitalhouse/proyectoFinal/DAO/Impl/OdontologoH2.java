@@ -60,6 +60,7 @@ public class OdontologoH2 implements ModeloDAO {
                 Odontologo odontologo = new Odontologo(matricula,nombre,apellido);
                 odontologosList.add(odontologo);
             }
+            pstmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -69,12 +70,13 @@ public class OdontologoH2 implements ModeloDAO {
     }
 
 
-    public Boolean listar(int id) {
+    public Boolean listar(Object o) {
         return null;
     }
 
 
-    public Boolean actualizar(int id) {
+    public Boolean actualizar(Object o) {
+        Odontologo odontologo = (Odontologo)o;
         Connection conexion = null;
         PreparedStatement pstmt = null;
 
@@ -82,7 +84,12 @@ public class OdontologoH2 implements ModeloDAO {
             Class.forName(DB_JDBC_DRIVER);
             conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
             pstmt = conexion.prepareStatement(SQLQueries.ACTUALIZAR_ODONTOLOGO);
-            pstmt.setString();
+            pstmt.setString(1,odontologo.getNombre());
+            pstmt.setString(2,odontologo.getApellido());
+            pstmt.setInt(3,odontologo.getMatricula());
+            pstmt.execute();
+            pstmt.close();
+            return true;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
@@ -91,7 +98,7 @@ public class OdontologoH2 implements ModeloDAO {
     }
 
 
-    public Boolean borrar(int id) {
+    public Boolean borrar(Object o) {
         return null;
     }
 }

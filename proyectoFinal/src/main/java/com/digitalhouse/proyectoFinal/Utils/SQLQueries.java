@@ -8,6 +8,6 @@ public class SQLQueries {
     public static final String INSERT_CUSTOM_ODONTOLOGO = "INSERT INTO ODONTOLOGO VALUES(?,?,?);";
     public static final String TRAER_TODOS_ODONTOLOGOS = "SELECT * FROM ODONTOLOGO";
     public static final String TRAER_ODONTOLOGO = "SELECT NOMBRE, APELLIDO FROM ODONTOLOGO WHERE MATRICULA = ?";
-    public static final String ACTUALIZAR_ODONTOLOGO = "UPDATE ODONTOLOGOS" + "SET NOMBRE = ?, APELLIDO = ? WHERE MATRICULA = ?;";
+    public static final String ACTUALIZAR_ODONTOLOGO = "UPDATE ODONTOLOGOS SET NOMBRE = ?, APELLIDO = ? WHERE MATRICULA = ?;";
 
 }
