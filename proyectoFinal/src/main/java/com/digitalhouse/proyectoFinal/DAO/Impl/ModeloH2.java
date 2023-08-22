@@ -1,14 +1,14 @@
 package com.digitalhouse.proyectoFinal.DAO.Impl;
 
-import com.digitalhouse.proyectoFinal.DAO.OdontologoDAO;
+import com.digitalhouse.proyectoFinal.DAO.ModeloDAO;
 import com.digitalhouse.proyectoFinal.Modelo.OdontologoDTO;
 
 import java.sql.*;
 import java.util.List;
 import org.apache.log4j.Logger;
-public class OdontologoH2 implements OdontologoDAO {
+public class ModeloH2 implements ModeloDAO {
 
-    private final Logger LOGGER = Logger.getLogger(OdontologoH2.class);
+    private final Logger LOGGER = Logger.getLogger(ModeloH2.class);
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
     private final static String DB_URL = "jdbc:h2:tcp://localhost/~/test";
     private final static String DB_USER = "sa";
