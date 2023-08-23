@@ -70,7 +70,7 @@ public class OdontologoH2 implements ModeloDAO {
     }
 
 
-    public Boolean listar(Object o) {
+    public Object listar(Object o) {
         return null;
     }
 
