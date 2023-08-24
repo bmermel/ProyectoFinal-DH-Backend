@@ -2,7 +2,6 @@ package com.digitalhouse.proyectoFinal.DAO.Impl;
 
 import com.digitalhouse.proyectoFinal.DAO.ModeloDAO;
 import com.digitalhouse.proyectoFinal.Modelo.Odontologo;
-import com.digitalhouse.proyectoFinal.Modelo.OdontologoDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ import java.util.List;
 import com.digitalhouse.proyectoFinal.Utils.SQLQueries;
 import org.apache.log4j.Logger;
 public class OdontologoH2 implements ModeloDAO {
-    private Logger LOGGER = Logger.getLogger(OdontologoH2.class);
+    private final Logger LOGGER = Logger.getLogger(OdontologoH2.class);
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
     private final static String DB_URL = "jdbc:h2:tcp://localhost/~/test";
     private final static String DB_USER = "sa";
@@ -19,8 +18,8 @@ public class OdontologoH2 implements ModeloDAO {
 
 
     @Override
-    public Boolean guardar(Object o) {
-        Odontologo odontologo = (Odontologo) o;
+    public Odontologo guardar(Object o) {
+        Odontologo odontologo = (Odontologo)o;
         Connection conexion = null;
         PreparedStatement pstmt = null;
         try{
@@ -35,7 +34,7 @@ public class OdontologoH2 implements ModeloDAO {
             //3- Enviamos la query
             pstmt.execute();
             pstmt.close();
-            return true;
+            return odontologo;
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -61,17 +60,26 @@ public class OdontologoH2 implements ModeloDAO {
                 odontologosList.add(odontologo);
             }
             pstmt.close();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
         return odontologosList;
     }
 
 
-    public Object listar(Object o) {
-        return null;
+    public Odontologo listar(Object o) throws ClassNotFoundException, SQLException {
+        Odontologo odontologo = (Odontologo)o;
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+        //Iniciamos conexion
+        Class.forName(DB_JDBC_DRIVER);
+        conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+        pstmt = conexion.prepareStatement(SQLQueries.BORRAR_ODONTOLOGO);
+        pstmt.setInt(1,odontologo.getMatricula());
+        //Enviamos query
+        pstmt.execute();
+        pstmt.close();
+        return odontologo;
     }
 
 
@@ -90,15 +98,29 @@ public class OdontologoH2 implements ModeloDAO {
             pstmt.execute();
             pstmt.close();
             return true;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public Boolean borrar(Object o) {
-        return null;
+    public Boolean borrar(Object o) throws ClassNotFoundException, SQLException {
+        Odontologo odontologo = (Odontologo)o;
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+        try {
+            LOGGER.info("Borrando odontologo");
+            Class.forName(DB_JDBC_DRIVER);
+            conexion = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
+            pstmt = conexion.prepareStatement(SQLQueries.BORRAR_ODONTOLOGO);
+            pstmt.setInt(1, odontologo.getMatricula());
+            pstmt.execute();
+            pstmt.close();
+            LOGGER.info("Odontologo borrado");
+            return true;
+        }catch (Exception e){
+            LOGGER.error(e);
+            return false;
+        }
     }
 }
