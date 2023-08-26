@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.util.List;
 
-public class PacienteH2 implements ModeloDAO {
+/*public class PacienteH2 implements ModeloDAO {
 
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
     //con la instruccion INIT=RUNSCRIPT cuando se conecta a la base ejecuta el script de sql que esta en dicho archivo
@@ -45,4 +45,4 @@ public class PacienteH2 implements ModeloDAO {
 
 
 
-}
+}*/

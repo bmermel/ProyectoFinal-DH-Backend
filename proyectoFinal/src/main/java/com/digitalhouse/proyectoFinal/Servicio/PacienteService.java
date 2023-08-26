@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class PacienteService {
-    private ModeloDAO<Paciente> pacienteModeloDAO;
+    ModeloDAO<Paciente> pacienteModeloDAO;
 
     @Autowired
 

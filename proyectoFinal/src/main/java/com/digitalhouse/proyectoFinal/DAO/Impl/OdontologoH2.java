@@ -15,9 +15,19 @@ public class OdontologoH2 implements ModeloDAO {
     private final static String DB_URL = "jdbc:h2:tcp://localhost/~/test";
     private final static String DB_USER = "sa";
     private final static String DB_PASS = "";
-
-
     @Override
+    public void crearTabla() throws ClassNotFoundException, SQLException {
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+
+        Class.forName(DB_JDBC_DRIVER);
+        conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
+        pstmt = conexion.prepareStatement(SQLQueries.CREARTABLA_ODONTOLOGOS);
+        pstmt.execute();
+        pstmt.close();
+        LOGGER.info("Tabla inicializada");
+    }
+
     public Odontologo guardar(Object o) {
         Odontologo odontologo = (Odontologo)o;
         Connection conexion = null;

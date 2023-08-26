@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface ModeloDAO <T>{
+    public void crearTabla() throws ClassNotFoundException, SQLException;
     public T guardar(T t);
 
     public List<T> listarTodos();

@@ -2,14 +2,19 @@ package com.digitalhouse.proyectoFinal.Servicio;
 
 import com.digitalhouse.proyectoFinal.DAO.ModeloDAO;
 import com.digitalhouse.proyectoFinal.Modelo.Odontologo;
+import org.apache.log4j.Logger;
 
 import java.sql.SQLException;
 import java.util.List;
 
 public class OdontologoService {
-    private ModeloDAO<Odontologo> odontolodoDAO;
-    public void setOdontolodoDAO(ModeloDAO<Odontologo> odontolodoDAO){
-        this.odontolodoDAO = odontolodoDAO;
+    private static Logger LOGGER = Logger.getLogger(OdontologoService.class);
+    private ModeloDAO odontolodoDAO;
+    public ModeloDAO setOdontolodoDAO(ModeloDAO<Odontologo> odontolodoDAO){
+        return this.odontolodoDAO = odontolodoDAO;
+    }
+    public void crearTabla() throws SQLException, ClassNotFoundException {
+        odontolodoDAO.crearTabla();
     }
     public void guardar(Odontologo odontologo){
         odontolodoDAO.guardar(odontologo);
@@ -19,7 +24,7 @@ public class OdontologoService {
         return odontolodoDAO.listarTodos();
     }
     public Odontologo listar(Odontologo odontologo) throws ClassNotFoundException, SQLException{
-        return odontolodoDAO.listar(odontologo);
+        return (Odontologo) odontolodoDAO.listar(odontologo);
     }
     public void actualizar(Odontologo odontologo) throws SQLException, ClassNotFoundException {
         odontolodoDAO.listar(odontologo);
