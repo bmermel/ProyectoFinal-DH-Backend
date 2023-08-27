@@ -24,7 +24,7 @@ public class OdontologoH2 implements ModeloDAO {
 
         Class.forName(DB_JDBC_DRIVER);
         conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
-        pstmt = conexion.prepareStatement(SQLQueries.CREARTABLA_ODONTOLOGOS);
+        pstmt = conexion.prepareStatement(SQLQueries.CREAR_TABLA_ODONTOLOGOS);
         pstmt.execute();
         pstmt.close();
         LOGGER.info("Tabla inicializada");
