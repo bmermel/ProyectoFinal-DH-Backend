@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class PacienteService {
-    ModeloDAO<Paciente> pacienteModeloDAO;
+ /*   ModeloDAO<Paciente> pacienteModeloDAO;
 
     @Autowired
 
@@ -45,4 +45,6 @@ public class PacienteService {
                 //pacienteModeloDAO.actualizar(p);
 
     }
+
+  */
 }

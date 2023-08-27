@@ -5,24 +5,13 @@ import com.digitalhouse.proyectoFinal.Modelo.Odontologo;
 import com.digitalhouse.proyectoFinal.Servicio.OdontologoService;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 import java.sql.SQLException;
+@SpringBootTest
 public class OdontologoServiceTest {
-   @Test
-    public void crearTabla() {
-       OdontologoH2 oH2 = new OdontologoH2();
-       OdontologoService odoService = new OdontologoService();
-       odoService.setOdontolodoDAO(oH2);
 
-   }
-   @Test
-   public void guardarOdontologo(){
-       Odontologo odo1 = new Odontologo(1, "Fernando", "Conil");
-       Odontologo odo2 = new Odontologo(2, "Brian", "Mermelstein");
-       Odontologo odo3 = new Odontologo(3, "Cosme", "fulanito");
-       OdontologoH2 oH2 = new OdontologoH2();
-       OdontologoService odoService = new OdontologoService();
-       odoService.setOdontolodoDAO(oH2);
-       odoService.guardar(odo1);
-   }
 }

@@ -9,6 +9,8 @@ import java.util.List;
 
 import com.digitalhouse.proyectoFinal.Utils.SQLQueries;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
+@Repository
 public class OdontologoH2 implements ModeloDAO {
     private final Logger LOGGER = Logger.getLogger(OdontologoH2.class);
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
