@@ -1,7 +1,7 @@
 package com.digitalhouse.proyectoFinal.Utils;
 
 public class SQLQueries {
-    //QUERIES PARA TABLA ODONTOLOGOS
+    //QUERIES ODONTOLOGOS
     public static final String CREAR_TABLA_ODONTOLOGOS =
             "DROP TABLE IF EXISTS ODONTOLOGO;" +
             "CREATE TABLE ODONTOLOGO(MATRICULA INT PRIMARY KEY, NOMBRE VARCHAR(255), APELLIDO VARCHAR(255));";

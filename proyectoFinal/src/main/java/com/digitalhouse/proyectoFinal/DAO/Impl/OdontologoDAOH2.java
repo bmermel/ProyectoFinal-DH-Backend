@@ -11,12 +11,15 @@ import com.digitalhouse.proyectoFinal.Utils.SQLQueries;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 @Repository
-public class OdontologoH2 implements ModeloDAO {
-    private final Logger LOGGER = Logger.getLogger(OdontologoH2.class);
+public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
+    private final Logger LOGGER = Logger.getLogger(OdontologoDAOH2.class);
     private final static String DB_JDBC_DRIVER = "org.h2.Driver";
     private final static String DB_URL = "jdbc:h2:tcp://localhost/~/test";
     private final static String DB_USER = "sa";
     private final static String DB_PASS = "";
+
+    public OdontologoDAOH2(){ }
+
     @Override
     public void crearTabla() throws ClassNotFoundException, SQLException {
         Connection conexion = null;
@@ -30,8 +33,8 @@ public class OdontologoH2 implements ModeloDAO {
         LOGGER.info("Tabla inicializada");
     }
 
-    public Odontologo guardar(Object o) {
-        Odontologo odontologo = (Odontologo)o;
+    @Override
+    public Odontologo guardar(Odontologo odontologo) {
         Connection conexion = null;
         PreparedStatement pstmt = null;
         try{
@@ -51,7 +54,6 @@ public class OdontologoH2 implements ModeloDAO {
             throw new RuntimeException(e);
         }
     }
-
 
     public List<Odontologo> listarTodos() {
         List<Odontologo> odontologosList = new ArrayList<>();
@@ -78,9 +80,8 @@ public class OdontologoH2 implements ModeloDAO {
         return odontologosList;
     }
 
-
-    public Odontologo listar(Object o) throws ClassNotFoundException, SQLException {
-        Odontologo odontologo = (Odontologo)o;
+    @Override
+    public Odontologo listar(Odontologo odontologo) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         PreparedStatement pstmt = null;
         //Iniciamos conexion
@@ -94,9 +95,8 @@ public class OdontologoH2 implements ModeloDAO {
         return odontologo;
     }
 
-
-    public Boolean actualizar(Object o) {
-        Odontologo odontologo = (Odontologo)o;
+    @Override
+    public Boolean actualizar(Odontologo odontologo) {
         Connection conexion = null;
         PreparedStatement pstmt = null;
 
@@ -115,9 +115,8 @@ public class OdontologoH2 implements ModeloDAO {
         }
     }
 
-
-    public Boolean borrar(Object o) throws ClassNotFoundException, SQLException {
-        Odontologo odontologo = (Odontologo)o;
+    @Override
+    public Boolean borrar(Odontologo odontologo) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         PreparedStatement pstmt = null;
         try {
@@ -135,4 +134,5 @@ public class OdontologoH2 implements ModeloDAO {
             return false;
         }
     }
+
 }
