@@ -15,7 +15,7 @@ public class OdontologoService {
 
     private ModeloDAO<Odontologo> odontolodoDAO;
     @Autowired
-    public OdontologoService(@Qualifier("OdontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
+    public OdontologoService(@Qualifier("odontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
         this.odontolodoDAO = odontolodoDAO;
     }
 

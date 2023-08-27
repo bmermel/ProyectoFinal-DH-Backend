@@ -31,8 +31,15 @@ public class TurnoDAOH2 implements ModeloDAO<Turno> {
         pstmt.close();
     }
 
+
     @Override
-    public Turno guardar(Turno turno) {
+    public Turno guardar(Turno turno) throws ClassNotFoundException, SQLException {
+        Connection conexion = null;
+        PreparedStatement pstmt = null;
+        Integer matriculaOdontologo = turno.getOdontologo().getMatricula();
+        Integer dniPaciente = turno.getPaciente().getDni();
+        Class.forName(DB_JDBC_DRIVER);
+        conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_URL);
         return null;
     }
 
@@ -42,7 +49,7 @@ public class TurnoDAOH2 implements ModeloDAO<Turno> {
     }
 
     @Override
-    public Turno listar(Turno turno) throws ClassNotFoundException, SQLException {
+    public Turno listar(Integer turno) throws ClassNotFoundException, SQLException {
         return null;
     }
 
@@ -52,7 +59,7 @@ public class TurnoDAOH2 implements ModeloDAO<Turno> {
     }
 
     @Override
-    public Boolean borrar(Turno turno) throws ClassNotFoundException, SQLException {
+    public Boolean borrar(Integer turno) throws ClassNotFoundException, SQLException {
         return null;
     }
 }

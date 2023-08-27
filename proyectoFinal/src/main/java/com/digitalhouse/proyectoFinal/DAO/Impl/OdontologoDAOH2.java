@@ -81,16 +81,19 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
     }
 
     @Override
-    public Odontologo listar(Odontologo odontologo) throws ClassNotFoundException, SQLException {
+    public Odontologo listar(Integer id) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         PreparedStatement pstmt = null;
         //Iniciamos conexion
         Class.forName(DB_JDBC_DRIVER);
         conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
-        pstmt = conexion.prepareStatement(SQLQueries.BORRAR_ODONTOLOGO);
-        pstmt.setInt(1,odontologo.getMatricula());
-        //Enviamos query
-        pstmt.execute();
+        pstmt = conexion.prepareStatement(SQLQueries.TRAER_ODONTOLOGO);
+        pstmt.setInt(1,id);
+        ResultSet rs = pstmt.executeQuery();
+        int matricula = rs.getInt("MATRICULA");
+        String nombre = rs.getString("NOMBRE");
+        String apellido = rs.getString("APELLIDO");
+        Odontologo odontologo = new Odontologo(matricula,nombre,apellido);
         pstmt.close();
         return odontologo;
     }
@@ -116,7 +119,7 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
     }
 
     @Override
-    public Boolean borrar(Odontologo odontologo) throws ClassNotFoundException, SQLException {
+    public Boolean borrar(Integer id) throws ClassNotFoundException, SQLException {
         Connection conexion = null;
         PreparedStatement pstmt = null;
         try {
@@ -124,7 +127,7 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
             Class.forName(DB_JDBC_DRIVER);
             conexion = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             pstmt = conexion.prepareStatement(SQLQueries.BORRAR_ODONTOLOGO);
-            pstmt.setInt(1, odontologo.getMatricula());
+            pstmt.setInt(1, id);
             pstmt.execute();
             pstmt.close();
             LOGGER.info("Odontologo borrado");
