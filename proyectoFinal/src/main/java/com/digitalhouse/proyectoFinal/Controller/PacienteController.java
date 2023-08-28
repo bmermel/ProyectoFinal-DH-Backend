@@ -1,6 +1,6 @@
 package com.digitalhouse.proyectoFinal.Controller;
 
-import com.digitalhouse.proyectoFinal.Servicio.PacienteService;
+import com.digitalhouse.proyectoFinal.Services.PacienteService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Servicio;
+package com.digitalhouse.proyectoFinal.Services;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

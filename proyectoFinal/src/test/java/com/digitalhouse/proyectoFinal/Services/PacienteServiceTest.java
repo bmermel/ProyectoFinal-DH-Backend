@@ -1,8 +1,6 @@
-package com.digitalhouse.proyectoFinal.Servicio;
+package com.digitalhouse.proyectoFinal.Services;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class PacienteServiceTest {
 

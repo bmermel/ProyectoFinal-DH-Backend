@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Servicio;
+package com.digitalhouse.proyectoFinal.Services;
 
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
