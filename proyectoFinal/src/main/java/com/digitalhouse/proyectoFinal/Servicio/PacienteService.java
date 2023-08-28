@@ -1,12 +1,10 @@
 package com.digitalhouse.proyectoFinal.Servicio;
 
-import com.digitalhouse.proyectoFinal.DAO.ModeloDAO;
 import com.digitalhouse.proyectoFinal.Modelo.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
