@@ -5,46 +5,43 @@ import com.digitalhouse.proyectoFinal.Modelo.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
 public class PacienteService {
- /*   ModeloDAO<Paciente> pacienteModeloDAO;
+
+    private ModeloDAO<Paciente> pacienteIDao;
 
     @Autowired
-
-    public PacienteService(ModeloDAO<Paciente> pacienteModeloDAO) {
-        this.pacienteModeloDAO = pacienteModeloDAO;
-    }
-    public Boolean guardar(Paciente p) {
-        //p.setFechaIngreso(new Date());
-        if (p!= null){
-            p.setFechaAlta(LocalDate.now());
-            pacienteModeloDAO.guardar(p);
-            System.out.println("paciente guardado");
-            return true;
-        }else
-        {return false;}
-
-    }
-    public Paciente listar(Integer id) {
-        return pacienteModeloDAO.buscar(id);
+    public PacienteService(ModeloDAO<Paciente> pacienteIDao) {
+        this.pacienteIDao = pacienteIDao;
     }
 
-    public List<Paciente> listarTodos() {
-        return pacienteModeloDAO.buscarTodos();
+    public Paciente guardar(Paciente p) throws SQLException, ClassNotFoundException {
+        p.setFechaAlta(new Date());
+        return pacienteIDao.guardar(p);
     }
 
-    public void borrar(Integer id) {
-        pacienteModeloDAO.eliminar(id);
+    public Paciente buscar(Integer id) throws SQLException, ClassNotFoundException {
+        return pacienteIDao.listar(id);
     }
 
-    public Boolean actualizar(Paciente p) {
-        return null;
-                //pacienteModeloDAO.actualizar(p);
-
+    public List<Paciente> buscarTodos() throws SQLException, ClassNotFoundException {
+        return pacienteIDao.listarTodos();
     }
 
-  */
+    public void eliminar(Integer id) throws SQLException, ClassNotFoundException {
+        pacienteIDao.borrar(id);
+    }
+
+    public void actualizar(Paciente p) throws SQLException, ClassNotFoundException {
+        pacienteIDao.actualizar(p);
+    }
+    public void crearTabla() throws SQLException, ClassNotFoundException {
+        pacienteIDao.crearTabla();
+    }
 }
+

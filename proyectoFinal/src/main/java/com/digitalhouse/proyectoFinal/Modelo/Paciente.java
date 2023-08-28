@@ -13,9 +13,10 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Paciente {
-    private int dni;
+    private Integer id;
+    private String dni;
     private String nombre;
     private String apellido;
     private String domicilio;
-    private LocalDate fechaAlta;
+    private Date fechaAlta;
 }
