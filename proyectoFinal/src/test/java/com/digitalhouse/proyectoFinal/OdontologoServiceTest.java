@@ -15,13 +15,9 @@ public class OdontologoServiceTest {
     @Autowired
     private OdontologoService odontologoService;
     @Test
-    public void crearTablaOdontologo() throws SQLException, ClassNotFoundException {
-        odontologoService.crearTabla();
-    }
-    @Test
     public void guardarOdontologo(){
         Odontologo odo1 = new Odontologo(1234,"Fernando","Conil");
         Odontologo odo2 = new Odontologo(2345,"Brian","Mermelstein");
-        odontologoService.guardar(odo1);
+        odontologoService.guardarOdontologo(odo1);
     }
 }
