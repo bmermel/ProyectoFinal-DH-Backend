@@ -1,4 +1,4 @@
 package com.digitalhouse.proyectoFinal.DTO;
 
-public class DimicilioDTO {
+public class DomicilioDTO {
 }
