@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Controlador;
+package com.digitalhouse.proyectoFinal.Controller;
 
 import com.digitalhouse.proyectoFinal.Servicio.PacienteService;
 import org.apache.log4j.Logger;
