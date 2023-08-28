@@ -20,28 +20,27 @@ public class OdontologoService {
     }
 
     //SETTER
-    public void setOdontolodoDAO(@Qualifier("OdontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
+    public void setOdontolodoDAO(@Qualifier("odontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
         this.odontolodoDAO = odontolodoDAO;
     }
 
     public void crearTabla() throws SQLException, ClassNotFoundException {
         odontolodoDAO.crearTabla();
     }
-    public void guardar(Odontologo odontologo){
-
+    public void guardar(Odontologo odontologo) throws SQLException, ClassNotFoundException {
         odontolodoDAO.guardar(odontologo);
     }
 
     public List<Odontologo> listarTodos(){
         return odontolodoDAO.listarTodos();
     }
-    public Odontologo listar(Odontologo odontologo) throws ClassNotFoundException, SQLException{
-        return (Odontologo) odontolodoDAO.listar(odontologo);
+    public Odontologo listar(Integer id) throws ClassNotFoundException, SQLException{
+        return (Odontologo) odontolodoDAO.listar(id);
     }
     public void actualizar(Odontologo odontologo) throws SQLException, ClassNotFoundException {
-        odontolodoDAO.listar(odontologo);
+        odontolodoDAO.actualizar(odontologo);
     }
-    public void borrar(Odontologo odontologo) throws ClassNotFoundException, SQLException{
-        odontolodoDAO.borrar(odontologo);
+    public void borrar(Integer id) throws ClassNotFoundException, SQLException{
+        odontolodoDAO.borrar(id);
     }
 }

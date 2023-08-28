@@ -43,7 +43,7 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
             conexion = DriverManager.getConnection(DB_URL,DB_USER,DB_PASS);
             //2- Creamos la query
             pstmt = conexion.prepareStatement(SQLQueries.INSERT_CUSTOM_ODONTOLOGO);
-            pstmt.setInt(1,odontologo.getMatricula());
+            pstmt.setString(1,odontologo.getMatricula());
             pstmt.setString(2, odontologo.getNombre());
             pstmt.setString(3,odontologo.getApellido());
             //3- Enviamos la query
@@ -65,12 +65,13 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
             pstmt = conexion.prepareStatement(SQLQueries.TRAER_TODOS_ODONTOLOGOS);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()){
-                int matricula = rs.getInt("MATRICULA");
+                Integer id = rs.getInt("ID");
+                String matricula = rs.getString("MATRICULA");
                 String nombre = rs.getString("NOMBRE");
                 String apellido = rs.getString("APELLIDO");
                 //P R E G U N T A R
                 // Usamos Odontologo u OdontologoDTO?
-                Odontologo odontologo = new Odontologo(matricula,nombre,apellido);
+                Odontologo odontologo = new Odontologo(id,matricula,nombre,apellido);
                 odontologosList.add(odontologo);
             }
             pstmt.close();
@@ -90,10 +91,11 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
         pstmt = conexion.prepareStatement(SQLQueries.TRAER_ODONTOLOGO);
         pstmt.setInt(1,id);
         ResultSet rs = pstmt.executeQuery();
-        int matricula = rs.getInt("MATRICULA");
+        Integer idOdo = rs.getInt("ID");
+        String matricula = rs.getString("MATRICULA");
         String nombre = rs.getString("NOMBRE");
         String apellido = rs.getString("APELLIDO");
-        Odontologo odontologo = new Odontologo(matricula,nombre,apellido);
+        Odontologo odontologo = new Odontologo(idOdo,matricula,nombre,apellido);
         pstmt.close();
         return odontologo;
     }
@@ -109,7 +111,8 @@ public class OdontologoDAOH2 implements ModeloDAO<Odontologo> {
             pstmt = conexion.prepareStatement(SQLQueries.ACTUALIZAR_ODONTOLOGO);
             pstmt.setString(1,odontologo.getNombre());
             pstmt.setString(2,odontologo.getApellido());
-            pstmt.setInt(3,odontologo.getMatricula());
+            pstmt.setString(3,odontologo.getMatricula());
+            pstmt.setInt(4,odontologo.getId());
             pstmt.execute();
             pstmt.close();
             return true;
