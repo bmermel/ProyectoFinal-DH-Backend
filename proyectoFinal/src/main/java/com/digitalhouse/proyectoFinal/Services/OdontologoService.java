@@ -1,6 +1,7 @@
 package com.digitalhouse.proyectoFinal.Services;
 
 import com.digitalhouse.proyectoFinal.Entity.Odontologo;
+import com.digitalhouse.proyectoFinal.Repository.OdontologoRepository;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,34 +13,18 @@ import java.util.List;
 public class OdontologoService {
     private static final Logger LOGGER = Logger.getLogger(OdontologoService.class);
 
-    private ModeloDAO<Odontologo> odontolodoDAO;
+    private OdontologoRepository repository;
     @Autowired
-    public OdontologoService(@Qualifier("odontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
-        this.odontolodoDAO = odontolodoDAO;
+    public OdontologoService(OdontologoRepository repository){
+        this.repository = repository;
     }
-
-    //SETTER
-    public void setOdontolodoDAO(@Qualifier("odontologoDAOH2") ModeloDAO<Odontologo> odontolodoDAO) {
-        this.odontolodoDAO = odontolodoDAO;
+    public void guardarOdontologo(Odontologo odontologo){
+        repository.save(odontologo);
     }
-
-    public void crearTabla() throws SQLException, ClassNotFoundException {
-        odontolodoDAO.crearTabla();
+    public void borrarOdontologo(int id){
+        repository.deleteById(id);
     }
-    public void guardar(Odontologo odontologo) throws SQLException, ClassNotFoundException {
-        odontolodoDAO.guardar(odontologo);
-    }
-
-    public List<Odontologo> listarTodos(){
-        return odontolodoDAO.listarTodos();
-    }
-    public Odontologo listar(Integer id) throws ClassNotFoundException, SQLException{
-        return (Odontologo) odontolodoDAO.listar(id);
-    }
-    public void actualizar(Odontologo odontologo) throws SQLException, ClassNotFoundException {
-        odontolodoDAO.actualizar(odontologo);
-    }
-    public void borrar(Integer id) throws ClassNotFoundException, SQLException{
-        odontolodoDAO.borrar(id);
+    public void actualizarOdontologo(Odontologo odontologo){
+        repository.save(odontologo);
     }
 }
