@@ -1,6 +1,6 @@
 package com.digitalhouse.proyectoFinal.Servicio;
 
-import com.digitalhouse.proyectoFinal.Modelo.Paciente;
+import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

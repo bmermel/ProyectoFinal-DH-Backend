@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Modelo;
+package com.digitalhouse.proyectoFinal.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Odontologo {
     private Integer id;
     private String matricula;

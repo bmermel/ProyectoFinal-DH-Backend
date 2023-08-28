@@ -1,5 +1,5 @@
 package com.digitalhouse.proyectoFinal;
-import com.digitalhouse.proyectoFinal.Modelo.Odontologo;
+import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import com.digitalhouse.proyectoFinal.Servicio.OdontologoService;
 import org.junit.Test;
 import org.junit.runner.RunWith;

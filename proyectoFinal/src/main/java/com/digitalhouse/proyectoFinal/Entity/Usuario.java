@@ -1,19 +1,17 @@
-package com.digitalhouse.proyectoFinal.Modelo;
+package com.digitalhouse.proyectoFinal.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Turno {
-    private int id;
-    private Date fecha;
-    private Odontologo odontologo;
+public class Usuario {
+    private String usuario;
+    private String contrasena;
+    private String rol;
     private Paciente paciente;
 }

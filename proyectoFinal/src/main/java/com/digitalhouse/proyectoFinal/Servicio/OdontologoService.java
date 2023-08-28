@@ -1,6 +1,6 @@
 package com.digitalhouse.proyectoFinal.Servicio;
 
-import com.digitalhouse.proyectoFinal.Modelo.Odontologo;
+import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Modelo;
+package com.digitalhouse.proyectoFinal.Entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
