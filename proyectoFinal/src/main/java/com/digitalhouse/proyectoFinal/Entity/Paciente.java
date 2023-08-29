@@ -25,6 +25,8 @@ public class Paciente {
     @Column(name="APELLIDO")
     private String apellido;
     @Column(name="DOMICILIO")
+    @ManyToOne
+    @JoinColumn(name="Domicilio_id")
     private String domicilio;
     @Column(name="FECHAALTA")
     private Date fechaAlta;

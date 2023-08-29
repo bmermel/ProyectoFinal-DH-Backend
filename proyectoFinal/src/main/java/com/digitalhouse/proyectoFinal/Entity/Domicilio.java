@@ -15,6 +15,8 @@ import lombok.Setter;
 public class Domicilio {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @OneToMany(mappedBy = "Domicilio")
+
     private Integer id;
     @Column(name="CALLE")
 
