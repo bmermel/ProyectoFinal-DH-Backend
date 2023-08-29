@@ -1,7 +1,9 @@
 package com.digitalhouse.proyectoFinal.Services;
 
+import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
 import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import com.digitalhouse.proyectoFinal.Repository.OdontologoRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,14 +14,18 @@ import java.util.List;
 @Service
 public class OdontologoService {
     private static final Logger LOGGER = Logger.getLogger(OdontologoService.class);
+    private static final ObjectMapper mapper = new ObjectMapper();
 
     private OdontologoRepository repository;
     @Autowired
     public OdontologoService(OdontologoRepository repository){
         this.repository = repository;
     }
-    public void guardarOdontologo(Odontologo odontologo){
+    public OdontologoDTO guardarOdontologo(OdontologoDTO odontologoDTO){
+        Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
+        OdontologoDTO odoDTO = mapper.convertValue(odontologo,OdontologoDTO.class);
+        return odoDTO;
     }
     public void borrarOdontologo(int id){
         repository.deleteById(id);
