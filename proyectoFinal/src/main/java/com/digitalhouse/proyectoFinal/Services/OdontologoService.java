@@ -30,7 +30,10 @@ public class OdontologoService {
     public void borrarOdontologo(int id){
         repository.deleteById(id);
     }
-    public void actualizarOdontologo(Odontologo odontologo){
+    public OdontologoDTO actualizarOdontologo(Odontologo odontologoDTO){
+        Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
+        OdontologoDTO odoDTO = mapper.convertValue(odontologo,OdontologoDTO.class);
+        return odoDTO;
     }
 }
