@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Open+Sans:400,300,600);
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'open sans condensed', helvetica, arial, sans;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+nav {
+    background-color: #2a2a2a;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+  }
+  
+  nav p {
+    color: #5d5d5d;
+    font-family: 'open sans condensed';
+    font-size: 20px;
+    margin: 0px 15px;
+    text-transform: uppercase;
+    font-weight: 200;
+  }
+  
+
+  nav button {
+    display: inline-block;
+    background: #1fb5bf;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 10px;
+    color: white;
+    margin-right: 10px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+}
+nav button:hover {
+    background: #23cad5;
+}
+nav button:active {
+    background: #1fb5bf;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
+}
+nav button:focus {
+    outline: none;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h1{
+    margin: 20px 10px 50px;
+}
+main div.conteiner{
+    display: flex;
+    flex-direction: column;
+}
+main div.conteiner button{
+    display: inline-block;
+    background: #1fb5bf;
+    border: none;
+    border-radius: 5px;
+    padding: 50px 100px;
+    color: white;
+    margin: 30px 30px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+}
+main div.conteiner button:hover {
+    background: #23cad5;
+    cursor: pointer;
+}
+main div.conteiner button:active {
+    background: #1fb5bf;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
+}
+main div.conteiner button:focus {
+    outline: none;
+}
