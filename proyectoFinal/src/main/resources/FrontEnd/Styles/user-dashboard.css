@@ -55,8 +55,43 @@ main{
     align-items: center;
 }
 h1{
-    margin: 20px 10px 50px;
+    font-size: 60px;
+    margin: 30px 10px 40px;
 }
+
+
+
+main div.conteiner-nuevo-turno{
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+main div.conteiner-nuevo-turno button{
+    font-size: 20px;
+    background: #1fb5bf;
+    border: none;
+    border-radius: 5px;
+    padding: 20px 100px;
+    color: white;
+    margin: 30px 30px;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+}
+main div.conteiner-nuevo-turno button:hover {
+    background: #23cad5;
+    cursor: pointer;
+}
+main div.conteiner-nuevo-turno button:active {
+    background: #1fb5bf;
+    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
+}
+main div.conteiner-nuevo-turno button:focus {
+    outline: none;
+}
+
+
 main div.conteiner{
     display: flex;
     flex-direction: column;
@@ -82,3 +117,4 @@ main div.conteiner button:active {
 main div.conteiner button:focus {
     outline: none;
 }
+

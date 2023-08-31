@@ -24,16 +24,14 @@ public class OdontologoService {
     public OdontologoDTO guardarOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
-        OdontologoDTO odoDTO = mapper.convertValue(odontologo,OdontologoDTO.class);
-        return odoDTO;
+        return odontologoDTO;
     }
     public void borrarOdontologo(int id){
         repository.deleteById(id);
     }
-    public OdontologoDTO actualizarOdontologo(Odontologo odontologoDTO){
+    public OdontologoDTO actualizarOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
-        OdontologoDTO odoDTO = mapper.convertValue(odontologo,OdontologoDTO.class);
-        return odoDTO;
+        return odontologoDTO;
     }
 }
