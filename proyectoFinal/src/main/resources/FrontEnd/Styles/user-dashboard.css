@@ -10,6 +10,12 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
 }
+.hidden{
+    display: none;
+}
+.border{
+    border: solid #eaeaea;
+}
 nav {
     background-color: #2a2a2a;
     padding: 10px;
@@ -17,19 +23,19 @@ nav {
     display: flex;
     align-items: center;
     justify-content: end;
-  }
+}
   
-  nav p {
+nav p {
     color: #5d5d5d;
     font-family: 'open sans condensed';
     font-size: 20px;
     margin: 0px 15px;
     text-transform: uppercase;
     font-weight: 200;
-  }
+}
   
 
-  nav button {
+nav button {
     display: inline-block;
     background: #1fb5bf;
     border: none;
@@ -55,22 +61,22 @@ main{
     align-items: center;
 }
 h1{
-    font-size: 60px;
+    font-size: 50px;
     margin: 30px 10px 40px;
 }
 
 
 
-main div.conteiner-nuevo-turno{
+main section.conteiner-nuevo-turno{
     width: 100vw;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-main div.conteiner-nuevo-turno button{
-    font-size: 20px;
+main section.conteiner-nuevo-turno button{
+    font-size: 18px;
     background: #1fb5bf;
     border: none;
     border-radius: 5px;
@@ -79,42 +85,47 @@ main div.conteiner-nuevo-turno button{
     margin: 30px 30px;
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
 }
-main div.conteiner-nuevo-turno button:hover {
+main section.conteiner-nuevo-turno button:hover {
     background: #23cad5;
     cursor: pointer;
 }
-main div.conteiner-nuevo-turno button:active {
+main section.conteiner-nuevo-turno button:active {
     background: #1fb5bf;
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
 }
-main div.conteiner-nuevo-turno button:focus {
+main section.conteiner-nuevo-turno button:focus {
     outline: none;
 }
-
-
-main div.conteiner{
+div.opciones{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 5px;
 }
-main div.conteiner button{
-    display: inline-block;
-    background: #1fb5bf;
+div.opciones label{
+    font-size: 25px;
+    padding: 0px 10px;
+    text-transform: uppercase;
+}
+form.form-nuevo-turno{
+    padding: 10px;
+}
+div.opciones select{
     border: none;
-    border-radius: 5px;
-    padding: 50px 100px;
-    color: white;
-    margin: 30px 30px;
-    box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+    border-bottom: 1px solid #eaeaea;
+    color: #757575;
+    text-transform: uppercase;
+    font-size: 12px;
 }
-main div.conteiner button:hover {
-    background: #23cad5;
-    cursor: pointer;
+button#enviar-form{
+
 }
-main div.conteiner button:active {
-    background: #1fb5bf;
-    box-shadow: inset 0px 1px 1px rgba(0,0,0,0.1);
+div.opciones input{
+    border: none;
+    border-bottom: 1px solid #eaeaea;
+    color: #757575;
+    text-transform: uppercase;
+    font-size: 15px;
 }
-main div.conteiner button:focus {
-    outline: none;
-}
+
 

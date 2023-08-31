@@ -16,12 +16,30 @@
     </head>
     <main>
         <h1>GESTOR DE TURNOS</h1>
-       <div class="conteiner-nuevo-turno">
+       <section class="conteiner-nuevo-turno" id="cont-nuevo-turno">
         <button id="nuevo-turno">NUEVO TURNO</button>
-        <form action="POST">
-            
+        <form action="" class="form-nuevo-turno border" id="form-nuevo-turno">
+            <div class="opciones">
+                <label for="select-paciente">Paciente:</label>
+                <select name="select-paciente" id="select-paciente">
+                    <!-- Renderizar aca adentro lista de pacientes -->
+                    <option value="none">Seleccione un paciente:</option>
+                </select><br>
+            </div>
+            <div class="opciones">
+                <label for="select-odontologo">Odontologo:</label>
+                <select name="select-odontologo" id="select-paciente">
+                    <!-- Renderizar aca adentro lista de pacientes -->
+                    <option value="none">Seleccione un odontologo:</option>
+                </select>
+            </div>
+            <div class="opciones">
+                <label for="fecha">selecione una fecha:</label>
+                <input type="date" id="fecha" name="fecha" value="" min="2023-01-01" max="2023-12-31" />
+            </div>
+            <button id="enviar-form">CREAR</button>
         </form>
-       </div>
+       </>
        <div class="conteine-lista">
        </div>      
     </main>

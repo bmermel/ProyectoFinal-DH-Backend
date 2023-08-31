@@ -1,17 +1,20 @@
 window.addEventListener("load", function(){
 
     const btnNuevoTurno = document.querySelector('#nuevo-turno');
-    const btnCancelar = document.querySelector('#cancelar-turno');
-    const btnVerTurnos = document.querySelector('#ver-todos')
+    const formNuevoTurno = document.querySelector("#form-nuevo-turno");
+    const divNuevoTurno = document.querySelector("#cont-nuevo-turno");
+    const btnEnviarForm = document.querySelector("#enviar-form");
+
 
     btnNuevoTurno.addEventListener("click",()=>{
+
         console.log("Crear un nuevo turno");
+        formNuevoTurno.classList.toggle('hidden')
+
     })
-    btnCancelar.addEventListener("click",()=>{
-        console.log("Cancelar un turno");
-    })
-    btnVerTurnos.addEventListener("click",()=>{
-        console.log("Listar todos los turnos");
+
+    btnEnviarForm.addEventListener("click",(e)=>{
+        e.preventDefault();
     })
 
 
