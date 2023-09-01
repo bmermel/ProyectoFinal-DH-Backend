@@ -10,7 +10,7 @@ window.addEventListener("load", function(){
 
         console.log("Crear un nuevo turno");
         formNuevoTurno.classList.toggle('hidden')
-
+        
     })
 
     btnEnviarForm.addEventListener("click",(e)=>{

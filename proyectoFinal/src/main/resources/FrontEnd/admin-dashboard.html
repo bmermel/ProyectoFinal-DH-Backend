@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Styles/user-dashboard.css">
+    <title>Document</title>
+    <script src="scripts/user-dashboard.js"></script>
+</head>
+<body>
+    <head>
+        <nav>
+            <p>Admin</p>
+            <button>Cerrar Sesion</button>
+        </nav>
+    </head>
+    <main>
+        <h1>GESTOR DE ODONTOLOGOS</h1>
+       <section class="conteiner-nuevo-turno" id="cont-nuevo-turno">
+        <button id="nuevo-turno">NUEVO ODONTOLOGO</button>
+        <form action="" class="form-nuevo-turno border" id="form-nuevo-turno">
+            <div class="opciones">
+                <label for="select-odontologo">Paciente:</label>
+                <select name="select-odontologo" id="select-odontologo">
+                    <!-- Renderizar aca adentro lista de odontologo -->
+                    <option value="none">Seleccione un paciente:</option>
+                </select><br>
+            </div>
+            <div class="opciones">
+                <label for="select-odontologo">Odontologo:</label>
+                <select name="select-odontologo" id="select-paciente">
+                    <!-- Renderizar aca adentro lista de pacientes -->
+                    <option value="none">Seleccione un odontologo:</option>
+                </select>
+            </div>
+            <div class="opciones">
+                <label for="fecha">selecione una fecha:</label>
+                <input type="date" id="fecha" name="fecha" value="" min="2023-01-01" max="2023-12-31" />
+            </div>
+            <button id="enviar-form">CREAR</button>
+        </form>
+       </>
+       <div class="conteine-lista">
+       </div>      
+    </main>
+</body>
+</html>
