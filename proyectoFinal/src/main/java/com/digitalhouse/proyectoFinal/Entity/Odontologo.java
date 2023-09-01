@@ -1,9 +1,6 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,8 +15,11 @@ public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    @Column(name="MATRICULA")
     private String matricula;
+    @Column(name="NOMBRE")
     private String nombre;
+    @Column(name="APELLIDO")
     private String apellido;
 
 }

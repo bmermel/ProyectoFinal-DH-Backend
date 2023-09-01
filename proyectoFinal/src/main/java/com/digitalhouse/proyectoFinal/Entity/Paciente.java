@@ -13,7 +13,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

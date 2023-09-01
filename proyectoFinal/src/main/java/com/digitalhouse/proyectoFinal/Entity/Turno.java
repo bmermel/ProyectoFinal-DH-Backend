@@ -1,9 +1,6 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,7 +17,10 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
+    @Column(name="FECHA")
     private Date fecha;
+    @Column(name="ID-ODONTOLOGO")
     private Odontologo odontologo;
+    @Column(name="ID-PACIENTE")
     private Paciente paciente;
 }
