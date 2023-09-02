@@ -11,15 +11,24 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "ODONTOLOGOS")
 public class Odontologo {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+
     @Column(name="MATRICULA")
     private String matricula;
+
     @Column(name="NOMBRE")
     private String nombre;
+
     @Column(name="APELLIDO")
     private String apellido;
+
+    @OneToMany(mappedBy = "ODONTOLOGOS")
+    @JoinColumn(name = "ODONTOLGOS_id")
+    private Turno turno;
 
 }

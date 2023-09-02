@@ -17,10 +17,12 @@ public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
-    @Column(name="FECHA")
+    @Column(name="F")
     private Date fecha;
-    @Column(name="ID-ODONTOLOGO")
-    private Integer idOdontologo;
-    @Column(name="ID-PACIENTE")
-    private Integer idPaciente;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ODONTOLOGOS_id")
+    private Odontologo odontologo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PACIENTES_id")
+    private Paciente paciente;
 }

@@ -7,12 +7,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "PACIENTES")
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -29,4 +31,8 @@ public class Paciente {
     private String domicilio;
     @Column(name="FECHAALTA")
     private Date fechaAlta;
+
+    @OneToMany(mappedBy = "PACIENTES")
+    @JoinColumn(name = "PACIENTES_id")
+    private List<Turno> turnos;
 }
