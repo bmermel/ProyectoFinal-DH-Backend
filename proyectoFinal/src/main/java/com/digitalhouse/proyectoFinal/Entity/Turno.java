@@ -20,7 +20,7 @@ public class Turno {
     @Column(name="FECHA")
     private Date fecha;
     @Column(name="ID-ODONTOLOGO")
-    private Odontologo odontologo;
+    private Integer idOdontologo;
     @Column(name="ID-PACIENTE")
-    private Paciente paciente;
+    private Integer idPaciente;
 }
