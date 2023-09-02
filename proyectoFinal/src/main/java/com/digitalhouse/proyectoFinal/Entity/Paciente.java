@@ -17,7 +17,8 @@ import java.util.List;
 @Table(name = "PACIENTES")
 public class Paciente {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "secuencia_pacientes", sequenceName = "secuencia_pacientes")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_pacientes")
     private Integer id;
     @Column(name="DNI")
     private String dni;

@@ -15,7 +15,8 @@ import java.util.Date;
 @Entity
 public class Turno {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "secuencia_turnos", sequenceName = "secuencia_turnos")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_turnos")
     private int id;
     @Column(name="F")
     private Date fecha;

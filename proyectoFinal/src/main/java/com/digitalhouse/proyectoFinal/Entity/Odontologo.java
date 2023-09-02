@@ -15,7 +15,8 @@ import lombok.Setter;
 public class Odontologo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "secuencia_odontologos", sequenceName = "secuencia_odontologos")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_odontologos")
     private Integer id;
 
     @Column(name="MATRICULA")
