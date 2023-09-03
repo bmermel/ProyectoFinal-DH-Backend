@@ -6,12 +6,13 @@ import com.digitalhouse.proyectoFinal.Repository.OdontologoRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.util.ClassUtils.isPresent;
+
 @Service
 public class OdontologoService {
     private static final Logger LOGGER = Logger.getLogger(OdontologoService.class);
@@ -22,15 +23,28 @@ public class OdontologoService {
     public OdontologoService(OdontologoRepository repository){this.repository = repository;}
 
 
-    public OdontologoDTO guardarOdontologo(OdontologoDTO odontologoDTO){
+    public Boolean crearOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
-        repository.save(odontologo);
-        return odontologoDTO;
+        Odontologo busqueda = repository.findByMatricula(odontologo.getMatricula());
+        if(busqueda != null){
+            LOGGER.warn("Ya se encuentra registrado un odontologo con la matricula" + odontologo.getMatricula());
+            return false;
+        }else{
+            repository.save(odontologo);
+            return true;
+        }
     }
 
 
-    public void borrarOdontologo(int id){
-        repository.deleteById(id);
+    public Boolean borrarOdontologo(int id){
+        Optional<Odontologo> odontologo = repository.findById(id);
+        if(odontologo == null){
+            LOGGER.error("El odontologo con id " + id +" no existe");
+            return false;
+        }else{
+            repository.deleteById(id);
+            return true;
+        }
     }
 
     public OdontologoDTO actualizarOdontologo(OdontologoDTO odontologoDTO){

@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.SQLException;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class OdontologoServiceTest {
@@ -18,6 +16,6 @@ public class OdontologoServiceTest {
     public void guardarOdontologo(){
         Odontologo odo1 = new Odontologo(1234,"Fernando","Conil");
         Odontologo odo2 = new Odontologo(2345,"Brian","Mermelstein");
-        odontologoService.guardarOdontologo(odo1);
+        odontologoService.crearOdontologo(odo1);
     }
 }
