@@ -3,7 +3,6 @@ package com.digitalhouse.proyectoFinal.Controller;
 import com.digitalhouse.proyectoFinal.DTO.CrearPacienteDTO;
 import com.digitalhouse.proyectoFinal.DTO.PacienteDTO;
 import com.digitalhouse.proyectoFinal.Services.PacienteService;
-import com.digitalhouse.proyectoFinal.Utils.Mapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;

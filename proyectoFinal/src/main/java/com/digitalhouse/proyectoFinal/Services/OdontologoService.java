@@ -18,20 +18,26 @@ public class OdontologoService {
 
     private OdontologoRepository repository;
     @Autowired
-    public OdontologoService(OdontologoRepository repository){
-        this.repository = repository;
-    }
+    public OdontologoService(OdontologoRepository repository){this.repository = repository;}
+
+
     public OdontologoDTO guardarOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
         return odontologoDTO;
     }
+
+
     public void borrarOdontologo(int id){
         repository.deleteById(id);
     }
+
     public OdontologoDTO actualizarOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         repository.save(odontologo);
         return odontologoDTO;
+    }
+    public OdontologoDTO buscarOdontologo(Integer id){
+        return mapper.convertValue(repository.findById(id).get(),OdontologoDTO.class);
     }
 }
