@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 public class OdontologoService {
@@ -39,5 +40,10 @@ public class OdontologoService {
     }
     public OdontologoDTO buscarOdontologo(Integer id){
         return mapper.convertValue(repository.findById(id).get(),OdontologoDTO.class);
+    }
+
+    public List<OdontologoDTO> listarTodos(){
+        List lista = repository.findAll();
+        return lista;
     }
 }
