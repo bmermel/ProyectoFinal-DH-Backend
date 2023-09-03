@@ -28,8 +28,7 @@ public class Odontologo {
     @Column(name="APELLIDO")
     private String apellido;
 
-    @OneToMany(mappedBy = "ODONTOLOGOS")
-    @JoinColumn(name = "ODONTOLGOS_id")
+    @OneToMany(mappedBy = "odontologo")
     private Turno turno;
 
 }

@@ -33,7 +33,6 @@ public class Paciente {
     @Column(name="FECHAALTA")
     private Date fechaAlta;
 
-    @OneToMany(mappedBy = "PACIENTES")
-    @JoinColumn(name = "PACIENTES_id")
+    @OneToMany(mappedBy = "paciente")
     private List<Turno> turnos;
 }
