@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -29,6 +31,6 @@ public class Odontologo {
     private String apellido;
 
     @OneToMany(mappedBy = "odontologo")
-    private Turno turno;
+    private List<Turno> turno;
 
 }

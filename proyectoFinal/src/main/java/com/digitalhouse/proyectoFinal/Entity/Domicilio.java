@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,4 +33,6 @@ public class Domicilio {
     @Column(name="PROVINCIA")
 
     private String provincia;
+
+
 }

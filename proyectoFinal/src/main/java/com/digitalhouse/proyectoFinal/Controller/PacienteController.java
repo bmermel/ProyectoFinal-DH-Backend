@@ -62,6 +62,4 @@ public class PacienteController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-
-
 }
