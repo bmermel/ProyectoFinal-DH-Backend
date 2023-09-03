@@ -22,7 +22,15 @@ public class OdontologoService {
     @Autowired
     public OdontologoService(OdontologoRepository repository){this.repository = repository;}
 
-
+    public OdontologoDTO buscarOdontologo(Integer id){
+        Optional<Odontologo> odontologo = repository.findById(id);
+        if(odontologo == null){
+            LOGGER.error("Noexiste el odontologo solicitado");
+            return null;
+        }else{
+            return mapper.convertValue(odontologo,OdontologoDTO.class);
+        }
+    }
     public Boolean crearOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
         Odontologo busqueda = repository.findByMatricula(odontologo.getMatricula());
@@ -37,8 +45,8 @@ public class OdontologoService {
 
 
     public Boolean borrarOdontologo(int id){
-        Optional<Odontologo> odontologo = repository.findById(id);
-        if(odontologo == null){
+        OdontologoDTO aux = this.buscarOdontologo(id);
+        if(aux == null){
             LOGGER.error("El odontologo con id " + id +" no existe");
             return false;
         }else{
@@ -47,13 +55,17 @@ public class OdontologoService {
         }
     }
 
-    public OdontologoDTO actualizarOdontologo(OdontologoDTO odontologoDTO){
-        Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
-        repository.save(odontologo);
-        return odontologoDTO;
-    }
-    public OdontologoDTO buscarOdontologo(Integer id){
-        return mapper.convertValue(repository.findById(id).get(),OdontologoDTO.class);
+    public Boolean actualizarOdontologo(OdontologoDTO odontologoDTO){
+        OdontologoDTO aux = this.buscarOdontologo(odontologoDTO.getId());
+        if (aux == null) {
+            LOGGER.error("No existe un odontologo con id " + odontologoDTO.getMatricula() + ".");
+            return false;
+        } else {
+            odontologoDTO.setId(aux.getId());
+            Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
+            repository.save(odontologo);
+            return true;
+        }
     }
 
     public List<OdontologoDTO> listarTodos(){
