@@ -8,38 +8,45 @@
     <script src="scripts/user-dashboard.js"></script>
 </head>
 <body>
-    <head>
+    <header>
         <nav>
             <p>User</p>
             <button>Cerrar Sesion</button>
         </nav>
-    </head>
+    </header>
     <main>
         <h1>GESTOR DE TURNOS</h1>
-       <section class="conteiner-nuevo-turno" id="cont-nuevo-turno">
-        <button id="nuevo-turno">NUEVO TURNO</button>
-        <form action="" class="form-nuevo-turno border" id="form-nuevo-turno">
-            <div class="opciones">
-                <label for="select-paciente">Paciente:</label>
-                <select name="select-paciente" id="select-paciente">
+        <section class="conteiner-nuevo-turno" id="cont-nuevo-turno">
+            <button id="nuevo-turno">NUEVO TURNO</button>
+            <form action="" class="form-nuevo-turno border flex" id="form-nuevo-turno">
+                <div class="opciones">
+                    <label for="select-paciente">Paciente:</label>
+                    <select name="select-paciente" id="select-paciente">
                     <!-- Renderizar aca adentro lista de pacientes -->
-                    <option value="none">Seleccione un paciente:</option>
-                </select><br>
-            </div>
-            <div class="opciones">
-                <label for="select-odontologo">Odontologo:</label>
-                <select name="select-odontologo" id="select-paciente">
+                        <option value="none">Seleccione un paciente:</option>
+                    </select><br>
+                </div>
+                <div class="opciones">
+                    <label for="select-odontologo">Odontologo:</label>
+                    <select name="select-odontologo" id="select-paciente">
                     <!-- Renderizar aca adentro lista de pacientes -->
-                    <option value="none">Seleccione un odontologo:</option>
-                </select>
+                        <option value="none">Seleccione un odontologo:</option>
+                    </select>
+                </div>
+                <div class="opciones">
+                    <label for="fecha">selecione una fecha:</label>
+                    <input type="date" id="fecha" name="fecha" value="" min="2023-01-01" max="2023-12-31" />
+                </div>
+                <button id="enviar-form">CREAR</button>
+            </form>
+        </section>
+        <section class="turnos-conteiner">
+            <h2 class="">turnos para el día de hoy</h2>
+            <!-- templete de turno -->
+            <div class="class">
+                
             </div>
-            <div class="opciones">
-                <label for="fecha">selecione una fecha:</label>
-                <input type="date" id="fecha" name="fecha" value="" min="2023-01-01" max="2023-12-31" />
-            </div>
-            <button id="enviar-form">CREAR</button>
-        </form>
-       </>
+        </section>
        <div class="conteine-lista">
        </div>      
     </main>
