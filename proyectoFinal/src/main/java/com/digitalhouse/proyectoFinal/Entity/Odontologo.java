@@ -17,8 +17,8 @@ import java.util.List;
 public class Odontologo {
 
     @Id
-    @SequenceGenerator(name = "secuencia_odontologos", sequenceName = "secuencia_odontologos")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_odontologos")
+ //   @SequenceGenerator(name = "secuencia_odontologos", sequenceName = "secuencia_odontologos")
+    @GeneratedValue //generator = "secuencia_odontologos")
     private Integer id;
 
     @Column(name="MATRICULA")

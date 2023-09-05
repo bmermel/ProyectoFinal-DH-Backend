@@ -21,15 +21,15 @@ public class PacienteDTO {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fechaAlta;
     //private Domicilio domicilio;
+
     @Override
     public String toString() {
-        return "ActualizarPacienteDto{" +
+        return "PacienteDTO{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellido='" + apellido + '\'' +
                 ", dni='" + dni + '\'' +
                 ", fechaAlta=" + fechaAlta +
-                ", domicilio=" + domicilio +
                 '}';
     }
 }

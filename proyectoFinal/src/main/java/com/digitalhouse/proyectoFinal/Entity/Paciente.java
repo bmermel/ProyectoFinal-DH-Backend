@@ -17,8 +17,9 @@ import java.util.List;
 @Table(name = "PACIENTES")
 public class Paciente {
     @Id
-    @SequenceGenerator(name = "secuencia_pacientes", sequenceName = "secuencia_pacientes")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_pacientes")
+  //  @SequenceGenerator(name = "secuencia_pacientes", sequenceName = "secuencia_pacientes")
+   // @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue
     private Integer id;
     @Column(name="DNI")
     private String dni;
@@ -26,13 +27,12 @@ public class Paciente {
     private String nombre;
     @Column(name="APELLIDO")
     private String apellido;
-    @Column(name="DOMICILIO")
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="Domicilio_id")
-    private String domicilio;
+    private Domicilio domicilio;
     @Column(name="FECHAALTA")
     private Date fechaAlta;
 
     @OneToMany(mappedBy = "paciente")
-    private List<Turno> turnos;
+   private List<Turno> turnos;
 }

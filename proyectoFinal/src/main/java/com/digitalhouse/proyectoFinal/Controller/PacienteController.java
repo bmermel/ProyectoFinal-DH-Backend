@@ -32,7 +32,7 @@ public class PacienteController {
         this.pacienteService = pacienteService;
     }
 
-    @PostMapping
+    @PostMapping("/crear")
     public void crearPaciente(@RequestBody PacienteDTO request) {
         LOGGER.info("Info recibida:  " + request);
         try {
@@ -43,7 +43,7 @@ public class PacienteController {
         }
     }
 
-    @PutMapping
+    @PutMapping("/actualizar")
     public void actualizarPaciente(@RequestBody PacienteDTO request) {
         LOGGER.info("Me llego:  " + request);
         try {
@@ -54,7 +54,7 @@ public class PacienteController {
 
         }
     }
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<PacienteDTO>> listarPacientes() {
         LOGGER.info("Me llego: listar pacientes  ");
         ObjectMapper mapper = new ObjectMapper();
@@ -68,8 +68,8 @@ public class PacienteController {
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-    @GetMapping
-    public ResponseEntity<Object> buscarPaciente(Integer id) throws SQLException, ClassNotFoundException {
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Object> buscarPaciente(@PathVariable Integer id) throws SQLException, ClassNotFoundException {
         Optional<Paciente> paciente = pacienteService.buscar(id);
         if(paciente == null){
             return new ResponseEntity<>("No existe el paciente seleccionado",HttpStatus.OK);

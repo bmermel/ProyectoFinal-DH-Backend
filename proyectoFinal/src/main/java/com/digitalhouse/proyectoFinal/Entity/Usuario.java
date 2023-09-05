@@ -20,5 +20,5 @@ public class Usuario {
     private String usuario;
     private String contrasena;
     private String rol;
-    private Paciente paciente;
+//    private Paciente paciente;
 }
