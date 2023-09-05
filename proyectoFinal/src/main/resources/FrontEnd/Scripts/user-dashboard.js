@@ -9,7 +9,13 @@ window.addEventListener("load", function(){
     btnNuevoTurno.addEventListener("click",()=>{
 
         console.log("Crear un nuevo turno");
-        formNuevoTurno.classList.toggle('hidden')
+        if(formNuevoTurno.classList.contains("flex")){
+            formNuevoTurno.classList.remove("flex");
+            formNuevoTurno.classList.add("hidden");
+        }else{
+            formNuevoTurno.classList.remove("hidden");
+            formNuevoTurno.classList.add("flex");
+        }
         
     })
 

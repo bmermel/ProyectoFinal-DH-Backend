@@ -3,6 +3,7 @@
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
+    overflow: hidden;
 }
 body {
     font-family: 'open sans condensed', helvetica, arial, sans;
@@ -13,8 +14,14 @@ body {
 .hidden{
     display: none;
 }
+.flex{
+    display: flex;
+}
 .border{
     border: solid #eaeaea;
+}
+header{ 
+    width: 100 vw;
 }
 nav {
     background-color: #2a2a2a;
@@ -23,6 +30,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: end;
+    width: 100vw;
 }
   
 nav p {
@@ -62,7 +70,14 @@ main{
 }
 h1{
     font-size: 50px;
+    font-weight: 300;
     margin: 30px 10px 40px;
+}
+h2{
+    font-size: 40px;
+    font-weight: 100;
+    margin: 30px 10px 40px;
+    text-transform: uppercase;
 }
 
 
@@ -118,7 +133,10 @@ div.opciones select{
     font-size: 12px;
 }
 button#enviar-form{
-
+    margin-left: 5px;
+    font-size: 15px;
+    padding: 15px 60px
+    
 }
 div.opciones input{
     border: none;
