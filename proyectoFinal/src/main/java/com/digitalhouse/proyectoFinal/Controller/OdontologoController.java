@@ -37,8 +37,25 @@ public class OdontologoController {
     @PostMapping("/crear")
     public ResponseEntity<Object> crearOdontologo(@RequestBody OdontologoDTO odontoloDTO){
         if(service.crearOdontologo(odontoloDTO)){
-
+            return new ResponseEntity<>(odontoloDTO,HttpStatus.CREATED);
         }
-        return null;
+        return new ResponseEntity<>("El odontologo que desea guardar ya existe",HttpStatus.ALREADY_REPORTED);
+    }
+    @DeleteMapping("/borrar/{id}")
+    public ResponseEntity<Object> borrarOdontologo(@PathVariable int id){
+        if(service.borrarOdontologo(id)){
+            return new ResponseEntity<>("Odontologo borrado con éxito",HttpStatus.ACCEPTED);
+        }else{
+            return new ResponseEntity<>("No éxiste el odontólogo que se desea borrar",HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PostMapping("/actualizar")
+    public ResponseEntity<Object> actualizarOdontologo(@RequestBody OdontologoDTO odontologo){
+        if(service.actualizarOdontologo(odontologo)){
+            return new ResponseEntity<>("Datos actualizados para el odontologo con id = " + odontologo.getId(),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("El odontologo solicitado no existe",HttpStatus.NOT_FOUND);
+        }
     }
 }
