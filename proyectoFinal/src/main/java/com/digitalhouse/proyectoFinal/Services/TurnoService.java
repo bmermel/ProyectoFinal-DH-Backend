@@ -14,6 +14,8 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @Setter @Getter
 public class TurnoService {
@@ -24,7 +26,7 @@ public class TurnoService {
     public TurnoService(TurnoRepository repository){
         this.repository = repository;
     };
-    public TurnoDTO guardarTurno(TurnoDTO turnoDTO){
+    public TurnoDTO crearTurno(TurnoDTO turnoDTO){
         Turno turno = mapper.convertValue(turnoDTO,Turno.class);
         repository.save(turno);
         TurnoDTO turnoGuardoDTO = mapper.convertValue(turno,TurnoDTO.class);
@@ -38,6 +40,10 @@ public class TurnoService {
         repository.save(turno);
         TurnoDTO turnoActualizado = mapper.convertValue(turno,TurnoDTO.class);
         return turnoActualizado;
+    }
+    public List<TurnoDTO> listarTodos(){
+        List lista = repository.findAll();
+        return lista;
     }
 
 
