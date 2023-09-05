@@ -33,8 +33,8 @@ public class OdontologoService {
     }
     public Boolean crearOdontologo(OdontologoDTO odontologoDTO){
         Odontologo odontologo = mapper.convertValue(odontologoDTO,Odontologo.class);
-        Optional<Odontologo> busqueda = repository.findById(odontologo.getId());
-        if(busqueda != null){
+        Optional<Odontologo> busqueda = repository.findByMatricula(odontologo.getMatricula());
+        if(busqueda.isPresent()){
             LOGGER.warn("Ya se encuentra registrado un odontologo con la matricula" + odontologo.getMatricula());
             return false;
         }else{
