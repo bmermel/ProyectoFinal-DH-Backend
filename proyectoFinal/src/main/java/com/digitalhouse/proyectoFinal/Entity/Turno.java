@@ -15,8 +15,9 @@ import java.util.Date;
 @Entity
 public class Turno {
     @Id
-    @SequenceGenerator(name = "secuencia_turnos", sequenceName = "secuencia_turnos")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_turnos")
+    //@SequenceGenerator(name = "secuencia_turnos", sequenceName = "secuencia_turnos")
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_turnos")
+    @GeneratedValue
     private int id;
     @Column(name="F")
     private Date fecha;
@@ -24,6 +25,6 @@ public class Turno {
     @JoinColumn(name = "ODONTOLOGOS_id")
     private Odontologo odontologo;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PACIENTES_id")
+   @JoinColumn(name = "PACIENTES_id")
     private Paciente paciente;
 }
