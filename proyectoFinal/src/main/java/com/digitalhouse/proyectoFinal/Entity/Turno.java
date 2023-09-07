@@ -23,12 +23,10 @@ public class Turno {
     private int id;
     @Column(name="F")
     private Date fecha;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ODONTOLOGOS_id")
-    @JsonIgnore
     private Odontologo odontologo;
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "PACIENTES_id")
-    @JsonIgnore
     private Paciente paciente;
 }
