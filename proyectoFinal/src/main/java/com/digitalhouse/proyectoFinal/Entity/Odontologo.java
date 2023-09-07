@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +32,7 @@ public class Odontologo {
     private String apellido;
 
     @OneToMany(mappedBy = "odontologo")
+    @JsonIgnore
     private List<Turno> turno;
 
 }

@@ -1,7 +1,9 @@
 package com.digitalhouse.proyectoFinal.Controller;
 
+import com.digitalhouse.proyectoFinal.DTO.DomicilioDTO;
 import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
 import com.digitalhouse.proyectoFinal.Entity.Odontologo;
+import com.digitalhouse.proyectoFinal.Repository.OdontologoRepository;
 import com.digitalhouse.proyectoFinal.Services.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/odontologos")
-public class OdontologoController {
+public class OdontologoController{
     @Autowired
     private OdontologoService service;
     @GetMapping("/listar")
@@ -37,7 +39,7 @@ public class OdontologoController {
     @PostMapping("/crear")
     public ResponseEntity<Object> crearOdontologo(@RequestBody OdontologoDTO odontoloDTO){
         if(service.crearOdontologo(odontoloDTO)){
-            return new ResponseEntity<>(odontoloDTO,HttpStatus.CREATED);
+            return new ResponseEntity<>("Guardado",HttpStatus.CREATED);
         }
         return new ResponseEntity<>("El odontologo que desea guardar ya existe",HttpStatus.ALREADY_REPORTED);
     }

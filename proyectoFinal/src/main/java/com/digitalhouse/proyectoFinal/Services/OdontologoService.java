@@ -25,7 +25,7 @@ public class OdontologoService {
     public OdontologoDTO buscarOdontologo(Integer id){
         Optional<Odontologo> odontologo = repository.findById(id);
         if(odontologo == null){
-            LOGGER.error("Noexiste el odontologo solicitado");
+            LOGGER.error("No existe el odontologo solicitado");
             return null;
         }else{
             return mapper.convertValue(odontologo,OdontologoDTO.class);
@@ -41,6 +41,10 @@ public class OdontologoService {
             repository.save(odontologo);
             return true;
         }
+    }
+    public OdontologoDTO buscarMatricula(String matricula){
+        Optional<Odontologo> odontologo = repository.findByMatricula(matricula);
+        return mapper.convertValue(odontologo,OdontologoDTO.class);
     }
 
 

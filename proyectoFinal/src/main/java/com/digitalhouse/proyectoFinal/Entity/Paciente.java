@@ -1,5 +1,7 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,12 +29,13 @@ public class Paciente {
     private String nombre;
     @Column(name="APELLIDO")
     private String apellido;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="Domicilio_id")
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private Domicilio domicilio;
     @Column(name="FECHAALTA")
     private Date fechaAlta;
-
     @OneToMany(mappedBy = "paciente")
-   private List<Turno> turnos;
+    @JsonIgnore
+    private List<Turno> turnos;
 }

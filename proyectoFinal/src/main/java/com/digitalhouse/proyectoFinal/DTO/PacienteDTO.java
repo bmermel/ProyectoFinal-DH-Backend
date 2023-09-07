@@ -1,6 +1,7 @@
 package com.digitalhouse.proyectoFinal.DTO;
 
 //import com.digitalhouse.proyectoFinal.Entity.Domicilio;
+import com.digitalhouse.proyectoFinal.Entity.Domicilio;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -20,7 +21,7 @@ public class PacienteDTO {
     private String dni;
     @JsonFormat(pattern = "yyyy-MM-dd")
     private Date fechaAlta;
-    //private Domicilio domicilio;
+    private DomicilioDTO domicilio;
 
     @Override
     public String toString() {

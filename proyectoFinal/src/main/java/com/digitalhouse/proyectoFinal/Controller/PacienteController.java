@@ -1,8 +1,10 @@
 package com.digitalhouse.proyectoFinal.Controller;
 
 import com.digitalhouse.proyectoFinal.DTO.CrearPacienteDTO;
+import com.digitalhouse.proyectoFinal.DTO.DomicilioDTO;
 import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
 import com.digitalhouse.proyectoFinal.DTO.PacienteDTO;
+import com.digitalhouse.proyectoFinal.Entity.Domicilio;
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import com.digitalhouse.proyectoFinal.Services.PacienteService;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -33,14 +35,15 @@ public class PacienteController {
     }
 
     @PostMapping("/crear")
-    public void crearPaciente(@RequestBody PacienteDTO request) {
-        LOGGER.info("Info recibida:  " + request);
-        try {
-            pacienteService.guardar(request);
-        } catch (SQLException | ClassNotFoundException e) {
-            LOGGER.error("Ocurrio un error al persistir el paciente", e);
-
-        }
+    public void crearPaciente(@RequestBody PacienteDTO request) throws SQLException, ClassNotFoundException {
+        // Crea el objeto Domicilio a partir de los datos del JSON
+        DomicilioDTO domicilio = new DomicilioDTO();
+        domicilio.setCalle(request.getDomicilio().getCalle());
+        domicilio.setNumero(request.getDomicilio().getNumero());
+        domicilio.setLocalidad(request.getDomicilio().getLocalidad());
+        domicilio.setProvincia(request.getDomicilio().getProvincia());
+        request.setDomicilio(domicilio);
+        pacienteService.guardar(request);
     }
 
     @PutMapping("/actualizar")

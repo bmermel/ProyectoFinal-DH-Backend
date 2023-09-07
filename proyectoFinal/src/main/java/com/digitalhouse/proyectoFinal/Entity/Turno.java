@@ -1,5 +1,7 @@
 package com.digitalhouse.proyectoFinal.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,10 +23,12 @@ public class Turno {
     private int id;
     @Column(name="F")
     private Date fecha;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
     @JoinColumn(name = "ODONTOLOGOS_id")
+    @JsonIgnore
     private Odontologo odontologo;
-    @ManyToOne(fetch = FetchType.LAZY)
-   @JoinColumn(name = "PACIENTES_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL )
+    @JoinColumn(name = "PACIENTES_id")
+    @JsonIgnore
     private Paciente paciente;
 }
