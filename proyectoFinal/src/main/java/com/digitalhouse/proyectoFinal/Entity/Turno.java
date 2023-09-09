@@ -21,7 +21,7 @@ public class Turno {
     //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuencia_turnos")
     @GeneratedValue
     private int id;
-    @Column(name="F")
+    @Column(name="FECHA")
     private Date fecha;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ODONTOLOGOS_id")

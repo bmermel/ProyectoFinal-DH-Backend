@@ -36,8 +36,14 @@ public class PacienteService {
 
     }
 
-    public Optional<Paciente> buscar(Integer id) throws SQLException, ClassNotFoundException {
-        return repository.findById(id);
+    public Paciente buscar(Integer id) {
+        Optional<Paciente> paciente = repository.findById(id);
+        if( paciente != null){
+            return mapper.convertValue(paciente,Paciente.class);
+        }else{
+            LOGGER.info("No se encontro al paciente");
+            return null;
+        }
     }
 
     public List<Paciente> buscarTodos() throws SQLException, ClassNotFoundException {

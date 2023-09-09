@@ -22,7 +22,7 @@ public class TurnoController {
     @Autowired
     private TurnoService turnoService;
     @PostMapping("/crear")
-    public ResponseEntity<Object> crearTurno(@RequestBody TurnoDTO turnoDTO) {
+    public ResponseEntity<Object> crearTurno(@RequestBody TurnoDTO turnoDTO) throws SQLException, ClassNotFoundException {
         LOGGER.info("Info recibida:  " + turnoDTO);
         if (turnoDTO != null) {
             turnoService.crearTurno(turnoDTO);

@@ -74,7 +74,7 @@ public class PacienteController {
     }
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Object> buscarPaciente(@PathVariable Integer id) throws SQLException, ClassNotFoundException {
-        Optional<Paciente> paciente = pacienteService.buscar(id);
+        Paciente paciente = pacienteService.buscar(id);
         if(paciente == null){
             return new ResponseEntity<>("No existe el paciente seleccionado",HttpStatus.OK);
             //return new ResponseEntity<>("No existe el paciente seleccionado", HttpStatus.OK);
