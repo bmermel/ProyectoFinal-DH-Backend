@@ -14,6 +14,6 @@ public class TurnoDTO {
     private int id;
     private String fecha;
     private String hora;
-    private Integer idOdontologo;
-    private Integer idPaciente;
+    private String idOdontologo;
+    private String idPaciente;
 }

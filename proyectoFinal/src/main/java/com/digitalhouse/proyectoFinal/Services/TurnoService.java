@@ -37,12 +37,12 @@ public class TurnoService {
     }
     public void crearTurno(TurnoDTO turnoDTO) {
         Turno turno = new Turno();
-        LocalDate fecha = LocalDate.parse(turnoDTO.getFecha(), DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate fecha = LocalDate.parse(turnoDTO.getFecha());
         LocalTime hora = LocalTime.parse(turnoDTO.getHora());
         turno.setFecha(fecha);
         turno.setHora(hora);
-        Integer idOdontologo = turnoDTO.getIdOdontologo();
-        Integer idPaciente = turnoDTO.getIdPaciente();
+        Integer idOdontologo = Integer.parseInt(turnoDTO.getIdOdontologo());
+        Integer idPaciente = Integer.parseInt(turnoDTO.getIdPaciente());
 
         repository.save(turno);
         OdontologoDTO odontologoDTO = odontologoService.buscar(idOdontologo);

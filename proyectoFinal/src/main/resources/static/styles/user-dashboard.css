@@ -91,7 +91,7 @@ main section.conteiner-nuevo-turno{
 }
 
 main section.conteiner-nuevo-turno button{
-    font-size: 18px;
+    font-size: 15px;
     background: #1fb5bf;
     border: none;
     border-radius: 5px;
@@ -118,7 +118,7 @@ div.opciones{
     margin: 10px 5px;
 }
 div.opciones label{
-    font-size: 23px;
+    font-size: 20px;
     padding: 0px 10px;
     text-transform: uppercase;
 }
@@ -131,7 +131,7 @@ div.opciones select{
     border-bottom: 1px solid #eaeaea;
     color: #757575;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px;
     height: 30px;
 }
 button#enviar-form{
@@ -149,3 +149,10 @@ div.opciones input{
 }
 
 
+@media only screen and (min-width: 360px) and (max-width: 1200px) {
+    .flex{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}

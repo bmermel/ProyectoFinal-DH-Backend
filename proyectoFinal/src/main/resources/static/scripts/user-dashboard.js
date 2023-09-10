@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
   const urlPacientes = "http://localhost:8080/pacientes";
   const urlOdontologos = "http://localhost:8080/odontologos";
-  const urlTurnos = "http://localhost:8080/turnos"
+  const urlTurnos = "http://localhost:8080/turnos";
   const btnNuevoTurno = document.querySelector("#nuevo-turno");
   const formNuevoTurno = document.querySelector("#form-nuevo-turno");
   const btnEnviarForm = document.querySelector("#enviar-form");
@@ -22,24 +22,32 @@ window.addEventListener("load", function () {
     const url = urlTurnos + "/crear"
     const paciente = document.getElementById('select-paciente').value;
     const odontologo = document.getElementById('select-odontologo').value;
-    const fecha = document.getElementById("fecha").value;
-    const hora = document.getElementById("select-hora").value;
-
+    const fechaTurno = document.getElementById("fecha").value;
+    const horaTurno = document.getElementById("select-hora").value;
+  
     console.log("Paciente ID:"+ paciente);
     console.log("Odontologo ID:"+ odontologo);
-    console.log("Fecha: " + fecha);
-    console.log(hora);
+    console.log("Fecha: " + fechaTurno);
+    console.log("Hora: "+ horaTurno);
 
     if(odontologo == "none"){alert("Debe seleccionar un odontologo")}
     if(paciente == "none"){this.alert("Debe seleccion un paciente")}
 
+    let payload = {
+      fecha: fechaTurno,
+      hora: horaTurno,
+      idOdontologo: odontologo,
+      idPaciente: paciente,
+    }
+
+    console.log("El JSON que se enviara es:")
+    console.log(JSON.stringify(payload));
+
     const settings = {
         method: "POST",
-        body:{
-            fecha: "10-09-2023",
-            hora: "10:30",
-            idOdontologo: odontologo,
-            idPaciente: paciente
+        body:JSON.stringify(payload),
+        headers:{
+          "Content-Type": "application/json"
         }
     }
     
