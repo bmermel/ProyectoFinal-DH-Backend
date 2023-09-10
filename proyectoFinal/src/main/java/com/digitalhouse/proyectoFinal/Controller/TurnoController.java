@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
 import java.util.List;
-@CrossOrigin(origins = "*")
+
 @RestController
+@CrossOrigin
 @RequestMapping("/turnos")
 public class TurnoController {
     private final Logger LOGGER = Logger.getLogger(TurnoController.class);

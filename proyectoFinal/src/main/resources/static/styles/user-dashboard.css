@@ -118,7 +118,7 @@ div.opciones{
     margin: 10px 5px;
 }
 div.opciones label{
-    font-size: 25px;
+    font-size: 23px;
     padding: 0px 10px;
     text-transform: uppercase;
 }
@@ -145,7 +145,7 @@ div.opciones input{
     border-bottom: 1px solid #eaeaea;
     color: #757575;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 
