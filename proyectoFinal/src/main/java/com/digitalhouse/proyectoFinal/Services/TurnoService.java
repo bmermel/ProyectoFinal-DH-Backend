@@ -1,6 +1,9 @@
 package com.digitalhouse.proyectoFinal.Services;
 
+import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
 import com.digitalhouse.proyectoFinal.DTO.TurnoDTO;
+import com.digitalhouse.proyectoFinal.Entity.Odontologo;
+import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import com.digitalhouse.proyectoFinal.Entity.Turno;
 import com.digitalhouse.proyectoFinal.Repository.TurnoRepository;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -15,6 +18,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Setter @Getter
@@ -31,13 +35,23 @@ public class TurnoService {
         this.pacienteService = pacienteService;
         this.odontologoService = odontologoService;
     }
-    public void crearTurno(TurnoDTO turnoDTO){
+    public void crearTurno(TurnoDTO turnoDTO) {
         Turno turno = new Turno();
         LocalDate fecha = LocalDate.parse(turnoDTO.getFecha(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         LocalTime hora = LocalTime.parse(turnoDTO.getHora());
         turno.setFecha(fecha);
         turno.setHora(hora);
+        Integer idOdontologo = turnoDTO.getIdOdontologo();
+        Integer idPaciente = turnoDTO.getIdPaciente();
+
         repository.save(turno);
+        OdontologoDTO odontologoDTO = odontologoService.buscar(idOdontologo);
+        Paciente paciente = pacienteService.buscar(idPaciente);
+        if(odontologoDTO != null && paciente != null) {
+            turno.setOdontologo(mapper.convertValue(odontologoDTO, Odontologo.class));
+            turno.setPaciente(paciente);
+            repository.save(turno);
+        }
     }
     public void borrarTurno(int id){
         repository.deleteById(id);
