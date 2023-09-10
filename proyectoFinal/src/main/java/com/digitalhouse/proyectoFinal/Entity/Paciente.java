@@ -8,6 +8,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -40,6 +44,16 @@ public class Paciente {
     @JsonIgnore
     private List<Turno> turnos;
 
+    public static Date generarFechaAleatoria(Date fechaInicio, Date fechaFin) {
+        long inicioMillis = fechaInicio.getTime();
+        long finMillis = fechaFin.getTime();
+
+        long intervaloMillis = finMillis - inicioMillis;
+        long fechaAleatoriaMillis = inicioMillis + (long) (Math.random() * intervaloMillis);
+
+        return new Date(fechaAleatoriaMillis);
+    }
+
     public static Paciente generarPacienteAleatorio() {
         Random random = new Random();
         Paciente paciente = new Paciente();
@@ -63,12 +77,24 @@ public class Paciente {
                               "Ramírez", "Rodríguez", "Ruiz", "Sánchez", "Serrano", "Suárez", "Torres", "Valdés",
                               "Vargas", "Vázquez", "Villalobos"};
 
+
+
         String nombre = nombres[random.nextInt(nombres.length)];
         String apellido = apellidos[random.nextInt(apellidos.length)];
         String dni = String.valueOf(random.nextInt(999999999));
+
+        Date fechaInicio = new Date(2023 - 1900, 0, 1); // 1 de enero de 2023
+        Date fechaFin = new Date(1953 - 1900, 11, 31);  // 31 de diciembre de 1953
+
+        // Generar una fecha aleatoria
+        Date fechaAleatoria = generarFechaAleatoria(fechaInicio, fechaFin);
+
         paciente.setNombre(nombre);
         paciente.setApellido(apellido);
         paciente.setDni(dni);
+        paciente.setFechaAlta(fechaAleatoria);
+        paciente.setDomicilio(Domicilio.generarDomicilioAleatorio());
+
         return paciente;
     }
 

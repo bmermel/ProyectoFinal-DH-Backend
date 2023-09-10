@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal;
 
+import com.digitalhouse.proyectoFinal.Entity.Domicilio;
 import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import com.digitalhouse.proyectoFinal.Repository.OdontologoRepository;
@@ -18,8 +19,35 @@ public class ProyectoFinalApplication {
 	private OdontologoRepository odontologoRepository;
 	@PostConstruct
 	public void cargarDatos() {
+		/*Domicilio domicilio1 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio2 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio3 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio4 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio5 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio6 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio7 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio8 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio9 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio10 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio11 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio12 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio13 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio14 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio15 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio16 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio17 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio18 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio19 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio20 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio21 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio22 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio23 = Domicilio.generarDomicilioAleatorio();
+		Domicilio domicilio24 = Domicilio.generarDomicilioAleatorio();*/
+
 		Paciente paciente1 = Paciente.generarPacienteAleatorio();
+		//paciente1.setDomicilio(domicilio1);
 		Paciente paciente2 = Paciente.generarPacienteAleatorio();
+		//paciente2.setDomicilio(domicilio2);
 		Paciente paciente3 = Paciente.generarPacienteAleatorio();
 		Paciente paciente4 = Paciente.generarPacienteAleatorio();
 		Paciente paciente5 = Paciente.generarPacienteAleatorio();
@@ -42,6 +70,7 @@ public class ProyectoFinalApplication {
 		Paciente paciente22 = Paciente.generarPacienteAleatorio();
 		Paciente paciente23 = Paciente.generarPacienteAleatorio();
 		Paciente paciente24 = Paciente.generarPacienteAleatorio();
+		//paciente1.setFechaAlta();
 		pacienteRepository.save(paciente1);
 		pacienteRepository.save(paciente2);
 		pacienteRepository.save(paciente3);
