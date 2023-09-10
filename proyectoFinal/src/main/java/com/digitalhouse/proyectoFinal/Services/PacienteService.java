@@ -38,8 +38,8 @@ public class PacienteService {
 
     public Paciente buscar(Integer id) {
         Optional<Paciente> paciente = repository.findById(id);
-        if( paciente != null){
-            return mapper.convertValue(paciente,Paciente.class);
+        if( paciente.isPresent()){
+            return paciente.get();
         }else{
             LOGGER.info("No se encontro al paciente");
             return null;

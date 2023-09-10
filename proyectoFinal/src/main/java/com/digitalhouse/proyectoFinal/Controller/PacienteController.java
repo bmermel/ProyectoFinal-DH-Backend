@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("/pacientes")
 public class PacienteController {
     //private static final ObjectMapper mapper = new ObjectMapper();

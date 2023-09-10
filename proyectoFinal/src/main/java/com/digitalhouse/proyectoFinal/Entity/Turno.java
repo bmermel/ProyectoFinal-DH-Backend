@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Getter
@@ -22,7 +24,9 @@ public class Turno {
     @GeneratedValue
     private int id;
     @Column(name="FECHA")
-    private Date fecha;
+    private LocalDate fecha;
+    @Column(name="HORA")
+    private LocalTime hora;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ODONTOLOGOS_id")
     private Odontologo odontologo;

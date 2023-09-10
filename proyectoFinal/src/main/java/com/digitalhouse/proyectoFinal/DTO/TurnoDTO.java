@@ -2,15 +2,18 @@ package com.digitalhouse.proyectoFinal.DTO;
 
 import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class TurnoDTO {
     private int id;
-    private Date fecha;
-    private Odontologo odontologo;
-    private Paciente paciente;
+    private String fecha;
+    private String hora;
+    private Integer idOdontologo;
+    private Integer idPaciente;
 }

@@ -11,24 +11,21 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.util.ClassUtils.isPresent;
-
 @Service
 public class OdontologoService {
     private static final Logger LOGGER = Logger.getLogger(OdontologoService.class);
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    private OdontologoRepository repository;
+    private final OdontologoRepository repository;
     @Autowired
     public OdontologoService(OdontologoRepository repository){this.repository = repository;}
 
-    public OdontologoDTO buscarOdontologo(Integer id){
+    public OdontologoDTO buscar(Integer id){
         Optional<Odontologo> odontologo = repository.findById(id);
-        if(odontologo == null){
-            LOGGER.error("No existe el odontologo solicitado");
-            return null;
+        if(odontologo.isPresent()){
+            return mapper.convertValue(odontologo.get(),OdontologoDTO.class);
         }else{
-            return mapper.convertValue(odontologo,OdontologoDTO.class);
+            return null;
         }
     }
     public Boolean crearOdontologo(OdontologoDTO odontologoDTO){
@@ -49,7 +46,7 @@ public class OdontologoService {
 
 
     public Boolean borrarOdontologo(int id){
-        OdontologoDTO aux = this.buscarOdontologo(id);
+        OdontologoDTO aux = this.buscar(id);
         if(aux == null){
             LOGGER.error("El odontologo con id " + id +" no existe");
             return false;
@@ -60,7 +57,7 @@ public class OdontologoService {
     }
 
     public Boolean actualizarOdontologo(OdontologoDTO odontologoDTO){
-        OdontologoDTO aux = this.buscarOdontologo(odontologoDTO.getId());
+        OdontologoDTO aux = this.buscar(odontologoDTO.getId());
         if (aux == null) {
             LOGGER.error("No existe un odontologo con id " + odontologoDTO.getMatricula() + ".");
             return false;
