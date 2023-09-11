@@ -40,7 +40,7 @@ public class OdontologoController{
         }
         return new ResponseEntity<>("El odontologo que desea guardar ya existe",HttpStatus.ALREADY_REPORTED);
     }
-    @DeleteMapping("/borrar/{id}")
+    @GetMapping("/borrar/{id}")
     public ResponseEntity<Object> borrarOdontologo(@PathVariable int id){
         if(service.borrarOdontologo(id)){
             return new ResponseEntity<>("Odontologo borrado con éxito",HttpStatus.ACCEPTED);

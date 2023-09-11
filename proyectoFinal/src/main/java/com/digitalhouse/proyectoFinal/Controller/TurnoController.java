@@ -42,8 +42,8 @@ public class TurnoController {
             return new ResponseEntity<>(lista,HttpStatus.OK);
         }
     }
-    @DeleteMapping("/borrar")
-    public ResponseEntity<Object> borrarTurno(Integer id){
+    @GetMapping("/borrar/{id}")
+    public ResponseEntity<Object> borrarTurno(@PathVariable Integer id){
         turnoService.borrarTurno(id);
         return ResponseEntity.ok("Turno borrado");
     }
