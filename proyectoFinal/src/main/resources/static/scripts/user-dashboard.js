@@ -19,7 +19,7 @@ window.addEventListener("load", function (){
     }
   });
 
-  // FUNCION PARA MOSTRAR LOS TURNOS QUE EXISTEN EN EL SERVIDOR
+  // FUNCION PARA CONSULTAR TURNOS AL SERVIDOR
   function consultarTurnos(){
     const url = urlTurnos + "/listar";
 
@@ -31,7 +31,7 @@ window.addEventListener("load", function (){
         botonesEliminarTurno();
       })
   }
-
+  //FUNCION PARA RENDERIZAR LOS TURNOS
   function renderizarTurnos(array){
     const ulTurnos = document.getElementById("turnos")
     
@@ -49,12 +49,14 @@ window.addEventListener("load", function (){
     })
   }
 
+  //FUNCION PARA BOTONES QUE SE RENDERIZAN AL CONSULTAR TURNOS
   function botonesEliminarTurno(){
     const btnEliminar = document.querySelectorAll(".eliminarTurno");
+    const url = urlTurnos + "/borrar"
     btnEliminar.forEach(boton => {
       boton.addEventListener("click", ()=>{
         const id = boton.getAttribute("id")
-        console.log("Eliminar turno " + id)
+        console.log("hiciste clic en el boton " + id)
 
       })
 
