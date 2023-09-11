@@ -1,4 +1,5 @@
 window.addEventListener("load", function () {
+
   const urlPacientes = "http://localhost:8080/pacientes";
   const urlOdontologos = "http://localhost:8080/odontologos";
   const urlTurnos = "http://localhost:8080/turnos";
@@ -17,33 +18,7 @@ window.addEventListener("load", function () {
     }
   });
 
-  function renderizarPacientes() {
-    const selectPacientes = document.getElementById("select-paciente");
-    const url = urlPacientes + "/listar";
-    console.log(url);
-    fetch(url)
-      .then((res) => res.json())
-      .then((pacientes) => {
-        pacientes.sort((a, b) => (a.apellido > b.apellido) ? 1 : -1);
-        pacientes.forEach((paciente) => {
-          selectPacientes.innerHTML += `<option value="${paciente.id}"> ${paciente.apellido + ", " + paciente.nombre + " (DNI:" + paciente.dni +")"}</option>"`;
-        });
-      });
-  }
-
-  function renderizarOdontologos() {
-    const selectOdontologos = document.getElementById("select-odontologo");
-    const url = urlOdontologos + "/listar";
-    console.log(url);
-    fetch(url)
-      .then((res) => res.json())
-      .then((odontologos) => {
-        odontologos.sort((a,b) =>(a.apellido > b.apellido) ? 1 : -1)   
-        odontologos.forEach((odontologo) => {
-          selectOdontologos.innerHTML += `<option value="${odontologo.id}"> ${odontologo.apellido + ", " + odontologo.nombre + " (MT:" + odontologo.matricula + ")"}</option>"`;
-        });
-      });
-  }
+  // FUNCION PARA MOSTRAR LOS TURNOS QUE EXISTEN EN EL SERVIDOR
 
   function renderizarTurnos(){
     const url = urlTurnos + "/listar"
@@ -61,11 +36,44 @@ window.addEventListener("load", function () {
                         <div><strong>Odontólogo:</strong> ${turno.odontologo.apellido + ", " + turno.odontologo.nombre + " (MT:" + turno.odontologo.matricula +")"} </div>
                         <div><strong>Fecha:</strong> ${turno.fecha} </div>
                         <div><strong>Hora:</strong> ${turno.hora}</div>
+                        <button id="eliminar turno">ELIMINAR</button>
                     </li>
           `
         })
       })
   }
+
+  //FUNCION PARA MOSTRAR LISTA DE PACIENTES EN EL FORMULARIO DE NUEVO TURNO
+  function renderizarPacientes() {
+    const selectPacientes = document.getElementById("select-paciente");
+    const url = urlPacientes + "/listar";
+    console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((pacientes) => {
+        pacientes.sort((a, b) => (a.apellido > b.apellido) ? 1 : -1);
+        pacientes.forEach((paciente) => {
+          selectPacientes.innerHTML += `<option value="${paciente.id}"> ${paciente.apellido + ", " + paciente.nombre + " (DNI:" + paciente.dni +")"}</option>"`;
+        });
+      });
+  }
+
+//FUNCION PARA MOSTRAR LISTA DE ODONTOLOGOS EN EL FORMULARIO DE NUEVO TURNO
+  function renderizarOdontologos() {
+    const selectOdontologos = document.getElementById("select-odontologo");
+    const url = urlOdontologos + "/listar";
+    console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((odontologos) => {
+        odontologos.sort((a,b) =>(a.apellido > b.apellido) ? 1 : -1)   
+        odontologos.forEach((odontologo) => {
+          selectOdontologos.innerHTML += `<option value="${odontologo.id}"> ${odontologo.apellido + ", " + odontologo.nombre + " (MT:" + odontologo.matricula + ")"}</option>"`;
+        });
+      });
+  }
+
+//FUNCION PARA CREAR UN NUEVO TURNO
 
   btnEnviarForm.addEventListener("click", (e) => {
     e.preventDefault();
@@ -104,9 +112,11 @@ window.addEventListener("load", function () {
     console.log("Preparando datos");
     fetch(url,settings)
     .then(res => console.log(res))
-    .then(data=>console.log(data))
+    .then(data=>{
+      console.log(data)
+      renderizarTurnos();
+    })   
     console.log("Datos enviados");
-    renderizarTurnos();
   });
 
 
