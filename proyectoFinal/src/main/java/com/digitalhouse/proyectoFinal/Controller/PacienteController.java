@@ -22,7 +22,7 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/pacientes")
-public class PacienteController {
+public class        PacienteController {
     //private static final ObjectMapper mapper = new ObjectMapper();
 
     private final Logger LOGGER = Logger.getLogger(PacienteController.class);

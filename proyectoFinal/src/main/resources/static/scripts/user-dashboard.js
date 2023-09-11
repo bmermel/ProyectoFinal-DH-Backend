@@ -17,6 +17,56 @@ window.addEventListener("load", function () {
     }
   });
 
+  function renderizarPacientes() {
+    const selectPacientes = document.getElementById("select-paciente");
+    const url = urlPacientes + "/listar";
+    console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((pacientes) => {
+        pacientes.sort((a, b) => (a.apellido > b.apellido) ? 1 : -1);
+        pacientes.forEach((paciente) => {
+          selectPacientes.innerHTML += `<option value="${paciente.id}"> ${paciente.apellido + ", " + paciente.nombre + " (DNI:" + paciente.dni +")"}</option>"`;
+        });
+      });
+  }
+
+  function renderizarOdontologos() {
+    const selectOdontologos = document.getElementById("select-odontologo");
+    const url = urlOdontologos + "/listar";
+    console.log(url);
+    fetch(url)
+      .then((res) => res.json())
+      .then((odontologos) => {
+        odontologos.sort((a,b) =>(a.apellido > b.apellido) ? 1 : -1)   
+        odontologos.forEach((odontologo) => {
+          selectOdontologos.innerHTML += `<option value="${odontologo.id}"> ${odontologo.apellido + ", " + odontologo.nombre + " (MT:" + odontologo.matricula + ")"}</option>"`;
+        });
+      });
+  }
+
+  function renderizarTurnos(){
+    const url = urlTurnos + "/listar"
+    const ulTurnos = document.getElementById("turnos")
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((turnos) =>{
+        console.log(turnos)
+        turnos.forEach(turno =>{
+          urlTurnos.innerHTML = "";
+          ulTurnos.innerHTML += `
+          <li class="turno" id="${turno.id}">
+                        <div><strong>Nombre Paciente:</strong>${turno.paciente.apellido + ", " + turno.paciente.nombre + " (DNI:" + turno.paciente.dni +")"}</div>
+                        <div><strong>Odontólogo:</strong> ${turno.odontologo.apellido + ", " + turno.odontologo.nombre + " (MT:" + turno.odontologo.matricula +")"} </div>
+                        <div><strong>Fecha:</strong> ${turno.fecha} </div>
+                        <div><strong>Hora:</strong> ${turno.hora}</div>
+                    </li>
+          `
+        })
+      })
+  }
+
   btnEnviarForm.addEventListener("click", (e) => {
     e.preventDefault();
     const url = urlTurnos + "/crear"
@@ -56,37 +106,16 @@ window.addEventListener("load", function () {
     .then(res => console.log(res))
     .then(data=>console.log(data))
     console.log("Datos enviados");
-
+    renderizarTurnos();
   });
 
-  function renderizarPacientes() {
-    const selectPacientes = document.getElementById("select-paciente");
-    const url = urlPacientes + "/listar";
-    console.log(url);
-    fetch(url)
-      .then((res) => res.json())
-      .then((pacientes) => {
-        pacientes.sort((a, b) => (a.apellido > b.apellido) ? 1 : -1);
-        pacientes.forEach((paciente) => {
-          selectPacientes.innerHTML += `<option value="${paciente.id}"> ${paciente.apellido + ", " + paciente.nombre}</option>"`;
-        });
-      });
-  }
 
-  function renderizarOdontologos() {
-    const selectOdontologos = document.getElementById("select-odontologo");
-    const url = urlOdontologos + "/listar";
-    console.log(url);
-    fetch(url)
-      .then((res) => res.json())
-      .then((odontologos) => {
-        odontologos.sort((a,b) =>(a.apellido > b.apellido) ? 1 : -1)   
-        odontologos.forEach((odontologo) => {
-          selectOdontologos.innerHTML += `<option value="${odontologo.id}"> ${odontologo.apellido + ", " + odontologo.nombre}</option>"`;
-        });
-      });
-  }
 
   renderizarPacientes();
   renderizarOdontologos();
+  renderizarTurnos();
+
+
+
+
 });
