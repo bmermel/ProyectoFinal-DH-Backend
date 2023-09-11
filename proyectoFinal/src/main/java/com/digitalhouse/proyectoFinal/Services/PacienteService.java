@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal.Services;
 
+import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
 import com.digitalhouse.proyectoFinal.DTO.PacienteDTO;
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import com.digitalhouse.proyectoFinal.Repository.PacienteRepository;
@@ -50,9 +51,17 @@ public class PacienteService {
         return repository.findAll();
     }
 
-    public void eliminar(Integer id) throws SQLException, ClassNotFoundException {
-        repository.deleteById(id);
+    public Boolean eliminar(Integer id) throws SQLException, ClassNotFoundException {
+        Paciente aux = this.buscar(id);
+        if(aux == null){
+            LOGGER.error("El paciente con id " + id +" no existe");
+            return false;
+        }else{
+            repository.deleteById(id);
+            return true;
+        }
     }
+
 
     public void actualizar(Paciente p) throws SQLException, ClassNotFoundException {
         repository.save(p);
