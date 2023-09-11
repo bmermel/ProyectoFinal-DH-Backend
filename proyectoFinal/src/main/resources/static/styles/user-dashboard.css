@@ -170,6 +170,16 @@ li.turno {
     font-weight: bold;
   }
 
+  button.eliminarTurno{
+        font-size: 12px;
+        background: #1fb5bf;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 25px;
+        color: white;
+        margin: 30px 30px;
+        box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+    }
 @media only screen and (min-width: 360px) and (max-width: 1200px) {
     .flex{
         display: flex;

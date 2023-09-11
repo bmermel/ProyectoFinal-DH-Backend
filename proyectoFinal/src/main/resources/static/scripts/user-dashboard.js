@@ -1,4 +1,4 @@
-window.addEventListener("load", function () {
+window.addEventListener("load", function (){
 
   const urlPacientes = "http://localhost:8080/pacientes";
   const urlOdontologos = "http://localhost:8080/odontologos";
@@ -6,6 +6,7 @@ window.addEventListener("load", function () {
   const btnNuevoTurno = document.querySelector("#nuevo-turno");
   const formNuevoTurno = document.querySelector("#form-nuevo-turno");
   const btnEnviarForm = document.querySelector("#enviar-form");
+  
 
   btnNuevoTurno.addEventListener("click", () => {
     console.log("Crear un nuevo turno");
@@ -19,29 +20,47 @@ window.addEventListener("load", function () {
   });
 
   // FUNCION PARA MOSTRAR LOS TURNOS QUE EXISTEN EN EL SERVIDOR
-
-  function renderizarTurnos(){
-    const url = urlTurnos + "/listar"
-    const ulTurnos = document.getElementById("turnos")
+  function consultarTurnos(){
+    const url = urlTurnos + "/listar";
 
     fetch(url)
       .then((res) => res.json())
-      .then((turnos) =>{
-        console.log(turnos)
-        turnos.forEach(turno =>{
-          urlTurnos.innerHTML = "";
-          ulTurnos.innerHTML += `
-          <li class="turno" id="${turno.id}">
-                        <div><strong>Nombre Paciente:</strong>${turno.paciente.apellido + ", " + turno.paciente.nombre + " (DNI:" + turno.paciente.dni +")"}</div>
-                        <div><strong>Odontólogo:</strong> ${turno.odontologo.apellido + ", " + turno.odontologo.nombre + " (MT:" + turno.odontologo.matricula +")"} </div>
-                        <div><strong>Fecha:</strong> ${turno.fecha} </div>
-                        <div><strong>Hora:</strong> ${turno.hora}</div>
-                        <button id="eliminar turno">ELIMINAR</button>
-                    </li>
-          `
-        })
+      .then(turnos =>{
+        console.table(turnos);
+        renderizarTurnos(turnos)
+        botonesEliminarTurno();
       })
   }
+
+  function renderizarTurnos(array){
+    const ulTurnos = document.getElementById("turnos")
+    
+    array.forEach(turno =>{
+      urlTurnos.innerHTML = "";
+      ulTurnos.innerHTML += `
+        <li class="turno" id="${turno.id}">
+          <div><strong>Nombre Paciente:</strong>${turno.paciente.apellido + ", " + turno.paciente.nombre + " (DNI:" + turno.paciente.dni +")"}</div>
+          <div><strong>Odontólogo:</strong> ${turno.odontologo.apellido + ", " + turno.odontologo.nombre + " (MT:" + turno.odontologo.matricula +")"} </div>
+          <div><strong>Fecha:</strong> ${turno.fecha} </div>
+          <div><strong>Hora:</strong> ${turno.hora}</div>
+          <button class="eliminarTurno" id="${turno.id}">ELIMINAR</button>
+        </li>`
+
+    })
+  }
+
+  function botonesEliminarTurno(){
+    const btnEliminar = document.querySelectorAll(".eliminarTurno");
+    btnEliminar.forEach(boton => {
+      boton.addEventListener("click", ()=>{
+        const id = boton.getAttribute("id")
+        console.log("Eliminar turno " + id)
+
+      })
+
+    })
+  }  
+
 
   //FUNCION PARA MOSTRAR LISTA DE PACIENTES EN EL FORMULARIO DE NUEVO TURNO
   function renderizarPacientes() {
@@ -88,42 +107,49 @@ window.addEventListener("load", function () {
     console.log("Fecha: " + fechaTurno);
     console.log("Hora: "+ horaTurno);
 
-    if(odontologo == "none"){alert("Debe seleccionar un odontologo")}
-    if(paciente == "none"){this.alert("Debe seleccion un paciente")}
-
-    let payload = {
-      fecha: fechaTurno,
-      hora: horaTurno,
-      idOdontologo: odontologo,
-      idPaciente: paciente,
-    }
-
-    console.log("El JSON que se enviara es:")
-    console.log(JSON.stringify(payload));
-
-    const settings = {
-        method: "POST",
-        body:JSON.stringify(payload),
-        headers:{
-          "Content-Type": "application/json"
-        }
+    if(odontologo == "none" || paciente == "none"){
+      alert("Debe seleccionar un odontologo y un paciente para crear un turno")
+    }else{
+      let payload = {
+        fecha: fechaTurno,
+        hora: horaTurno,
+        idOdontologo: odontologo,
+        idPaciente: paciente,
+      }
+  
+      console.log("El JSON que se enviara es:")
+      console.log(JSON.stringify(payload));
+  
+      const settings = {
+          method: "POST",
+          body:JSON.stringify(payload),
+          headers:{
+            "Content-Type": "application/json"
+          }
+      }
+      
+      console.log("Preparando datos");
+      fetch(url,settings)
+      .then(res => console.log(res))
+      .then(data=>{
+        console.log(data)
+        consultarTurnos();
+        
+      })   
+      console.log("Datos enviados");
     }
     
-    console.log("Preparando datos");
-    fetch(url,settings)
-    .then(res => console.log(res))
-    .then(data=>{
-      console.log(data)
-      renderizarTurnos();
-    })   
-    console.log("Datos enviados");
+    
+
+    
   });
+
 
 
 
   renderizarPacientes();
   renderizarOdontologos();
-  renderizarTurnos();
+  consultarTurnos();
 
 
 
