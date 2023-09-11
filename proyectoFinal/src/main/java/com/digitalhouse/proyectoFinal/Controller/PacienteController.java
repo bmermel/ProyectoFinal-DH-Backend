@@ -83,5 +83,13 @@ public class        PacienteController {
         }
 
     }
+    @DeleteMapping("/borrar/{id}")
+    public ResponseEntity<Object> borrarPaciente(@PathVariable int id) throws SQLException, ClassNotFoundException {
+        if(pacienteService.eliminar(id)){
+            return new ResponseEntity<>("Paciente borrado con éxito",HttpStatus.ACCEPTED);
+        }else{
+            return new ResponseEntity<>("No éxiste el paciente que se desea borrar",HttpStatus.NOT_FOUND);
+        }
+    }
 
 }
