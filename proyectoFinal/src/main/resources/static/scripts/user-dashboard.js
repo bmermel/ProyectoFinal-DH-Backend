@@ -22,16 +22,26 @@ window.addEventListener("load", function (){
   // FUNCION PARA CONSULTAR TURNOS AL SERVIDOR
   function consultarTurnos(){
     const url = urlTurnos + "/listar";
-
+    const ulTurnos = document.getElementById("turnos")
     fetch(url)
       .then((res) => res.json())
       .then(turnos =>{
-        renderizarTurnos(turnos)
+        turnos.forEach(turno =>{ 
+          urlTurnos.innerHTML = "";
+          ulTurnos.innerHTML += `
+            <li class="turno" id="${turno.id}">
+              <div><strong>Nombre Paciente:</strong>${turno.paciente.apellido + ", " + turno.paciente.nombre + " (DNI:" + turno.paciente.dni +")"}</div>
+              <div><strong>Odontólogo:</strong> ${turno.odontologo.apellido + ", " + turno.odontologo.nombre + " (MT:" + turno.odontologo.matricula +")"} </div>
+              <div><strong>Fecha:</strong> ${turno.fecha} </div>
+              <div><strong>Hora:</strong> ${turno.hora}</div>
+              <button class="eliminarTurno" id="${turno.id}">ELIMINAR</button>
+            </li>`
+        })
         botonesEliminarTurno();
       })
   }
   //FUNCION PARA RENDERIZAR LOS TURNOS
-  function renderizarTurnos(arr){
+ /* function renderizarTurnos(arr){
     const ulTurnos = document.getElementById("turnos")
     arr.forEach(turno =>{ 
       urlTurnos.innerHTML = "";
@@ -44,7 +54,7 @@ window.addEventListener("load", function (){
           <button class="eliminarTurno" id="${turno.id}">ELIMINAR</button>
         </li>`
     })
-  }
+  }*/
 
   //FUNCION PARA BOTONES QUE SE RENDERIZAN AL CONSULTAR TURNOS
   function botonesEliminarTurno(){
@@ -63,7 +73,7 @@ window.addEventListener("load", function (){
         fetch(url, settings)
           .then(res=>{
             console.log(res);
-            consultarTurnos();
+            location.reload()
           })
       })
     })
@@ -145,6 +155,7 @@ window.addEventListener("load", function (){
         
       })   
       console.log("Datos enviados");
+      this.location.reload()
     }
     
     
