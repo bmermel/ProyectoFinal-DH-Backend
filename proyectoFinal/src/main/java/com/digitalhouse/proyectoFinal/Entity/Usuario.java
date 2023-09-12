@@ -16,9 +16,11 @@ import lombok.Setter;
 @Entity
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private String email;
     private String usuario;
     private String contrasena;
     private String rol;
+
 //    private Paciente paciente;
 }
