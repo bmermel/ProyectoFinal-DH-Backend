@@ -27,10 +27,10 @@ public class Turno {
     private LocalDate fecha;
     @Column(name="HORA")
     private LocalTime hora;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "ODONTOLOGOS_id")
     private Odontologo odontologo;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "PACIENTES_id")
     private Paciente paciente;
 }

@@ -26,16 +26,14 @@ window.addEventListener("load", function (){
     fetch(url)
       .then((res) => res.json())
       .then(turnos =>{
-        console.table(turnos);
         renderizarTurnos(turnos)
         botonesEliminarTurno();
       })
   }
   //FUNCION PARA RENDERIZAR LOS TURNOS
-  function renderizarTurnos(array){
+  function renderizarTurnos(arr){
     const ulTurnos = document.getElementById("turnos")
-    
-    array.forEach(turno =>{
+    arr.forEach(turno =>{ 
       urlTurnos.innerHTML = "";
       ulTurnos.innerHTML += `
         <li class="turno" id="${turno.id}">
@@ -45,23 +43,31 @@ window.addEventListener("load", function (){
           <div><strong>Hora:</strong> ${turno.hora}</div>
           <button class="eliminarTurno" id="${turno.id}">ELIMINAR</button>
         </li>`
-
     })
   }
 
   //FUNCION PARA BOTONES QUE SE RENDERIZAN AL CONSULTAR TURNOS
   function botonesEliminarTurno(){
     const btnEliminar = document.querySelectorAll(".eliminarTurno");
-    const url = urlTurnos + "/borrar"
-    btnEliminar.forEach(boton => {
-      boton.addEventListener("click", ()=>{
-        const id = boton.getAttribute("id")
-        console.log("hiciste clic en el boton " + id)
+    
+    //funcionalidad para cada turno
+    btnEliminar.forEach(boton=>{
+      boton.addEventListener("click",e=>{
+        const id = e.target.id;
+        const url = `${urlTurnos}/borrar/${id}`
 
+        const settings = {
+          method: 'DELETE'
+        }
+
+        fetch(url, settings)
+          .then(res=>{
+            console.log(res);
+            consultarTurnos();
+          })
       })
-
     })
-  }  
+  }
 
 
   //FUNCION PARA MOSTRAR LISTA DE PACIENTES EN EL FORMULARIO DE NUEVO TURNO
@@ -145,7 +151,7 @@ window.addEventListener("load", function (){
 
     
   });
-
+  
 
 
 

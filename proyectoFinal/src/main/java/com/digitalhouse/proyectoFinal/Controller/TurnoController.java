@@ -36,11 +36,7 @@ public class TurnoController {
     @GetMapping("/listar")
     public ResponseEntity<Object> listarTurnos(){
         List<TurnoDTO> lista = turnoService.listarTodos();
-        if(lista.size() == 0){
-            return new ResponseEntity<>("No hay turnos para mostrar", HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(lista,HttpStatus.OK);
-        }
+        return new ResponseEntity<>(lista,HttpStatus.OK);
     }
     @GetMapping("/borrar/{id}")
     public ResponseEntity<Object> borrarTurno(@PathVariable Integer id){
