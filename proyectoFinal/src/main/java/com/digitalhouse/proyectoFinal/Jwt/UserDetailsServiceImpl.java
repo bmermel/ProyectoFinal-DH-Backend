@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal.Jwt;
 
+import com.digitalhouse.proyectoFinal.Entity.Usuario;
 import com.digitalhouse.proyectoFinal.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,9 +12,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UsuarioService usuarioService;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) {
         Usuario usuario = usuarioService.buscarPorEmail(email).get();
         return UsuarioPrincipal.build(usuario);
     }
-}{
+
 }

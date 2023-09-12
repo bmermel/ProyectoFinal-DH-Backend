@@ -1,13 +1,14 @@
 package com.digitalhouse.proyectoFinal.DTO;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.digitalhouse.proyectoFinal.Entity.Rol;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class UsuarioDTO {
         private String email;
         private String usuario;
         private String contrasena;
-        private String rol;
+        private Set<Rol> roles = new HashSet<>();
 
     }
 
