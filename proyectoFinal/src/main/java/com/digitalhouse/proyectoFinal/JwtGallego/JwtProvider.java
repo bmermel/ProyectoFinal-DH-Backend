@@ -1,15 +1,14 @@
-package com.digitalhouse.proyectoFinal.Utils;
+package com.digitalhouse.proyectoFinal.JwtGallego;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 
 import java.security.SignatureException;
 import java.util.Date;
-import lombok.Value;
+
 import org.apache.log4j.Logger;
 
 public class JwtProvider {
@@ -21,7 +20,7 @@ public class JwtProvider {
     private int expiration;
 
     public String generateToken(Authentication authentication){
-        UsuarioPrincipal usuario = (UsuarioPrincipal) authentication.getPrincipal();
+        Usuario usuario = (Usuario) authentication.getU();
         return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))

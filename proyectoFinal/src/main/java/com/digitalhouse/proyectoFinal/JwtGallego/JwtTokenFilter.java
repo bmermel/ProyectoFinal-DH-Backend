@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.Utils;
+package com.digitalhouse.proyectoFinal.JwtGallego;
 
 import com.digitalhouse.proyectoFinal.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +7,7 @@ public class JwtTokenFilter {
     @Autowired
     JwtProvider jwtProvider;
 
-    @Autowiredwwww
+    @Autowired
     UsuarioService usuarioService;
 
     @Override
