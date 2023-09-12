@@ -1,9 +1,8 @@
 package com.digitalhouse.proyectoFinal.Jwt;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
+import com.digitalhouse.proyectoFinal.Entity.Usuario;
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties;
 import org.springframework.security.core.Authentication;
 
 import java.security.SignatureException;
@@ -20,8 +19,8 @@ public class JwtProvider {
     private int expiration;
 
     public String generateToken(Authentication authentication){
-        Usuario usuario = (Usuario) authentication.getU();
-        return Jwts.builder().setSubject(usuarioPrincipal.getUsername())
+        UsuarioPrincipal usuario = (UsuarioPrincipal) authentication.getPrincipal();
+        return Jwts.builder().setSubject(usuario.getUsername())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(new Date().getTime() + expiration * 1000))
                 .signWith(SignatureAlgorithm.HS512, secret)
@@ -44,8 +43,6 @@ public class JwtProvider {
             logger.error("token expirado");
         }catch (IllegalArgumentException e){
             logger.error("token vacío");
-        }catch (SignatureException e){
-            logger.error("fail en la firma");
         }
         return false;
     }
