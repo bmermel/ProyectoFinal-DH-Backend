@@ -16,7 +16,8 @@ import lombok.Setter;
 @Entity
 public class Usuario {
     @Id
-    //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Integer id;
     private String email;
     private String usuario;
     private String contrasena;

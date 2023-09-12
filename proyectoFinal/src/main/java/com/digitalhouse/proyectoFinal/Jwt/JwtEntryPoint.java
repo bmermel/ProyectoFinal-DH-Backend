@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.JwtGallego;
+package com.digitalhouse.proyectoFinal.Jwt;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

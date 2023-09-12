@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.JwtGallego;
+package com.digitalhouse.proyectoFinal.Jwt;
 
 import com.digitalhouse.proyectoFinal.Services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;

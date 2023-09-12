@@ -16,8 +16,7 @@ import lombok.Setter;
 @Entity
 public class UsuarioDTO {
 
-        @Id
-        //@GeneratedValue(strategy = GenerationType.SEQUENCE)
+        private Integer id;
         private String email;
         private String usuario;
         private String contrasena;

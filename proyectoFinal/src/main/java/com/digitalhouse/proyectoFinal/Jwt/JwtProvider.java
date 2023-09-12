@@ -1,4 +1,4 @@
-package com.digitalhouse.proyectoFinal.JwtGallego;
+package com.digitalhouse.proyectoFinal.Jwt;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
