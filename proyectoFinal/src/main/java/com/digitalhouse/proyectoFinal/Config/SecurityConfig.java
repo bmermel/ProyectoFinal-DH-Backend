@@ -34,6 +34,8 @@ public class SecurityConfig {
                                 //.requestMatchers(new AntPathRequestMatcher("/auth/login")).authenticated()
                                 .requestMatchers(new AntPathRequestMatcher("/auth/register")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/login.html")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/admin-dashboard.html")).hasRole("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/user-dashboard.html")).authenticated()
                                 .anyRequest().permitAll()
                 )
                 .sessionManagement(sessionManager->
