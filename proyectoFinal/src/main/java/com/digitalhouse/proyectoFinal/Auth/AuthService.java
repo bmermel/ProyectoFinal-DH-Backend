@@ -1,5 +1,6 @@
 package com.digitalhouse.proyectoFinal.Auth;
 
+import com.digitalhouse.proyectoFinal.Controller.PacienteController;
 import com.digitalhouse.proyectoFinal.Jwt.JwtService;
 import com.digitalhouse.proyectoFinal.User.Role;
 import com.digitalhouse.proyectoFinal.User.User;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthService {
+
     private final UserRepository userRepository;
     private final JwtService jwtService;
     @Autowired
@@ -33,6 +35,7 @@ public class AuthService {
     public AuthResponse register(RegisterRequest request){
         User user = User.builder()
                 .usuario(request.getUsuario())
+
                 .contrasena(passwordEncoder.encode(request.getContrasena()))
                 .email((request.getEmail()))
                 .role(Role.valueOf(request.getRole()))

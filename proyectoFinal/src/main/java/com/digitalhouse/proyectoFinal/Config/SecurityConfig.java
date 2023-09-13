@@ -31,10 +31,12 @@ public class SecurityConfig {
                                 .disable())
                 .authorizeHttpRequests(authRequest ->
                         authRequest
-                                .requestMatchers(new AntPathRequestMatcher("/auth/login")).permitAll()
+                                //.requestMatchers(new AntPathRequestMatcher("/auth/login")).authenticated()
                                 .requestMatchers(new AntPathRequestMatcher("/auth/register")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/login.html")).permitAll()
-                                .anyRequest().authenticated()
+                                .requestMatchers(new AntPathRequestMatcher("/admin-dashboard.html")).hasRole("ADMIN")
+                                .requestMatchers(new AntPathRequestMatcher("/user-dashboard.html")).authenticated()
+                                .anyRequest().permitAll()
                 )
                 .sessionManagement(sessionManager->
                         sessionManager
