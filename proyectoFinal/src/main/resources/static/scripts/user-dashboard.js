@@ -3,11 +3,13 @@ window.addEventListener("load", function (){
   const urlPacientes = "http://localhost:8080/pacientes";
   const urlOdontologos = "http://localhost:8080/odontologos";
   const urlTurnos = "http://localhost:8080/turnos";
+  const token = JSON.stringify(this.localStorage.getItem("jwt"));
   const btnNuevoTurno = document.querySelector("#nuevo-turno");
   const formNuevoTurno = document.querySelector("#form-nuevo-turno");
   const btnEnviarForm = document.querySelector("#enviar-form");
+  const nombreUsuario = document.querySelector("#userRenderedName");
   
-
+  nombreUsuario.innerText = localStorage.getItem("usuario")
   btnNuevoTurno.addEventListener("click", () => {
     console.log("Crear un nuevo turno");
     if (formNuevoTurno.classList.contains("flex")) {
@@ -169,8 +171,5 @@ window.addEventListener("load", function (){
   renderizarPacientes();
   renderizarOdontologos();
   consultarTurnos();
-
-
-
 
 });

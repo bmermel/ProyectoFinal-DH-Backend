@@ -56,6 +56,7 @@ function normalizacionLogin(email, password) {
         contrasena: password.trim()
 
     }
+    localStorage.setItem("usuario",email.trim())
 
     return usuario;
 }
@@ -83,9 +84,13 @@ function fetchApiLogin(url,payload) {
         console.log("TOKEN desde login.js: ", data.token);
         //console.log(data.jwt);
         if(data.token){
+            
             localStorage.setItem('jwt', JSON.stringify(data.token));
 
             location.href = '/user-dashboard.html'
+            
+        }else{
+            localStorage.removeItem("usuario")
         }
     }).catch( error => console.log(error))
 }
