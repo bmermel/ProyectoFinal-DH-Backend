@@ -1,2 +1,9 @@
-package com.digitalhouse.proyectoFinal.User;public interface UserRepository {
+package com.digitalhouse.proyectoFinal.User;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User,Integer> {
+    Optional<User> findByUsuario(String username);
 }

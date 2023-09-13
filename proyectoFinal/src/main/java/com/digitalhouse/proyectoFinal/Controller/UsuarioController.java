@@ -1,27 +1,15 @@
 package com.digitalhouse.proyectoFinal.Controller;
 
-import com.digitalhouse.proyectoFinal.DTO.OdontologoDTO;
-import com.digitalhouse.proyectoFinal.DTO.UsuarioDTO;
-import com.digitalhouse.proyectoFinal.Entity.Paciente;
-import com.digitalhouse.proyectoFinal.Entity.Usuario;
-import com.digitalhouse.proyectoFinal.Services.OdontologoService;
-import com.digitalhouse.proyectoFinal.Services.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.SQLException;
-import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping("/user")
 public class UsuarioController {
-    @Autowired
+ /*   @Autowired
     private UsuarioService service;
     @PostMapping("/registrar")
-    public ResponseEntity<Object> crearUsuario(@RequestBody UsuarioDTO usuarioDTO){
+    public ResponseEntity<Object> crearUsuario(@RequestBody User usuarioDTO){
         if(service.crearUsuario(usuarioDTO)){
             return new ResponseEntity<>("Guardado", HttpStatus.CREATED);
         }
@@ -46,5 +34,5 @@ public class UsuarioController {
             return new ResponseEntity<>(usuario,HttpStatus.OK);
         }
 
-    }
+    }*/
 }

@@ -1,5 +1,5 @@
-package com.digitalhouse.proyectoFinal.Emuns;
+package com.digitalhouse.proyectoFinal.User;
 
-public enum NombreRol {
-    ROLE_ADMIN, ROLE_USER
+public enum Role {
+    ADMIN, USER
 }
