@@ -86,11 +86,30 @@ function fetchApiLogin(url,payload) {
         if(data.token){
             
             localStorage.setItem('jwt', JSON.stringify(data.token));
-
-            location.href = '/user-dashboard.html'
-            
+            const payloadTraducido = obtenerPayloadJWT(data.token);
+            const rol = payloadTraducido.Rol.authority;
+            if(rol === "USER"){
+                location.href = '/user-dashboard.html'
+                console.log(rol);
+            }else if(rol === "ADMIN"){
+                location.href = '/admin-dashboard.html'
+                console.log(rol);
         }else{
             localStorage.removeItem("usuario")
         }
-    }).catch( error => console.log(error))
+    }}).catch( error => console.log(error))
+}
+
+//funcion para decodificar token jwt
+function obtenerPayloadJWT(token) {
+    const partes = token.split('.');
+    if (partes.length !== 3) {
+        throw new Error('El token JWT no tiene el formato esperado');
+    }
+
+    const payloadCodificado = partes[1];
+    const payloadDecodificado = atob(payloadCodificado);
+    const payloadObjeto = JSON.parse(payloadDecodificado);
+
+    return payloadObjeto;
 }

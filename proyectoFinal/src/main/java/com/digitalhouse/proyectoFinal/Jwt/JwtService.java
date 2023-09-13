@@ -23,10 +23,12 @@ public class JwtService {
     }
 
     private String getToken(Map<String,Object> extraClaims, UserDetails user){
+        extraClaims.put("Rol",user.getAuthorities().toArray()[0]);
         return Jwts
                 .builder()
                 .setClaims(extraClaims)
                 .setSubject(user.getUsername())
+
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 100000 * 600 +60 * 10))
                 .signWith(getKey(), SignatureAlgorithm.HS256)
