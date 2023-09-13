@@ -18,10 +18,10 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 //significa q no se pueden repetir los valores d username
-@Table(name="user", uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario"})})
+@Table(name="Usuarios", uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario"})})
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String email;
     @Column(nullable = false)

@@ -29,10 +29,10 @@ public class AuthService {
     }
     public AuthResponse register(RegisterRequest request){
         User user = User.builder()
-                .usuario(request.getUsername())
-                .contrasena(passwordEncoder.encode(request.getPassword()))
+                .usuario(request.getUsuario())
+                .contrasena(passwordEncoder.encode(request.getContrasena()))
                 .email((request.getEmail()))
-                .role(Role.USER)
+                .role(Role.valueOf(request.getRole()))
                 .build();
         userRepository.save(user);
         return AuthResponse.builder()
