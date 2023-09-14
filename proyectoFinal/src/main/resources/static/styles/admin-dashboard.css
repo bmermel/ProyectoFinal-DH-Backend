@@ -68,12 +68,15 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100vw;
 }
 #main{
+    width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content:center;
     align-items: flex-start;
+    gap:150px;
 }
 h1{
     font-size: 50px;
@@ -92,7 +95,6 @@ h2{
 
 
 main section.conteiner-nuevo-turno{
-    width: 48%;
     display: flex;
     flex-direction: column;
     align-items:first baseline;
@@ -101,11 +103,12 @@ main section.conteiner-nuevo-turno{
 }
 
 main section.conteiner-nuevo-turno button{
+    width: 100%;
     font-size: 15px;
     background: #1fb5bf;
     border: none;
     border-radius: 5px;
-    padding: 20px 100px;
+    padding: 20px 60px;
     color: white;
     margin: 30px 30px;
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
@@ -122,6 +125,7 @@ main section.conteiner-nuevo-turno button:focus {
     outline: none;
 }
 div.opciones{
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -132,7 +136,16 @@ div.opciones label{
     padding: 0px 10px;
     text-transform: uppercase;
 }
-form.form-nuevo-turno{
+form.form-nuevo-paciente{
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+form.form-nuevo-paciente h4{
+    margin-top: 35px;
+}
+form.form-nuevo-odontologo{
+    width: 100%;
     padding: 10px;
     gap: 10px;
 }
@@ -144,8 +157,14 @@ div.opciones select{
     font-size: 12px;
     height: 30px;
 }
-button#enviar-form{
-    margin-left: 5px;
+button#enviar-form-paciente{
+    margin-left: 0px;
+    font-size: 15px;
+    padding: 15px 60px
+    
+}
+button#enviar-form-odontologo{
+    margin-left: 0px;
     font-size: 15px;
     padding: 15px 60px
     
