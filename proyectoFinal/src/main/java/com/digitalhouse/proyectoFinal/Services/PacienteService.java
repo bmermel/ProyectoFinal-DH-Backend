@@ -63,8 +63,16 @@ public class PacienteService {
     }
 
 
-    public void actualizar(Paciente p) throws SQLException, ClassNotFoundException {
-        repository.save(p);
+    public Boolean actualizar(Paciente p) throws SQLException, ClassNotFoundException {
+        Paciente aux = this.buscar(p.getId());
+        if(aux == null){
+            LOGGER.error("No existe un paciente con id "+ p.getId()+".");
+            return false;
+        }else{
+            p.setId(aux.getId());
+            repository.save(p);
+            return true;
+        }
     }
     public void crearTabla() throws SQLException, ClassNotFoundException {
         //pacienteIDao.crearTabla();

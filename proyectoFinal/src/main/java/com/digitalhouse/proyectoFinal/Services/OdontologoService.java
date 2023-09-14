@@ -59,7 +59,7 @@ public class OdontologoService {
     public Boolean actualizarOdontologo(OdontologoDTO odontologoDTO){
         OdontologoDTO aux = this.buscar(odontologoDTO.getId());
         if (aux == null) {
-            LOGGER.error("No existe un odontologo con id " + odontologoDTO.getMatricula() + ".");
+            LOGGER.error("No existe un odontologo con id " + odontologoDTO.getId() + ".");
             return false;
         } else {
             odontologoDTO.setId(aux.getId());

@@ -35,7 +35,7 @@ public class TurnoService {
         this.pacienteService = pacienteService;
         this.odontologoService = odontologoService;
     }
-    public void crearTurno(TurnoDTO turnoDTO) {
+    public Boolean crearTurno(TurnoDTO turnoDTO) {
         Turno turno = new Turno();
         LocalDate fecha = turnoDTO.getFecha();
         LocalTime hora = LocalTime.parse(turnoDTO.getHora());
@@ -51,10 +51,14 @@ public class TurnoService {
             turno.setOdontologo(mapper.convertValue(odontologoDTO, Odontologo.class));
             turno.setPaciente(paciente);
             repository.save(turno);
+            return true;
+        }else{
+            return false;
         }
     }
-    public void borrarTurno(int id){
-        repository.deleteById(id);
+    public Boolean borrarTurno(int id){
+            repository.deleteById(id);
+            return true;
     }
     public TurnoDTO actualizarTurno(TurnoDTO turnoDTO){
        /* Turno turno = mapper.convertValue(turnoDTO,Turno.class);

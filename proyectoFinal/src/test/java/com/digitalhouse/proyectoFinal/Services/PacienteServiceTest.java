@@ -38,15 +38,23 @@ class PacienteServiceTest {
     }
 
     @Test
-    void buscarTodos() {
-
+    void buscarTodos() throws SQLException, ClassNotFoundException {
+        assertNotNull(pacienteService.buscarTodos());
     }
 
     @Test
-    void eliminar() {
+    void eliminar() throws SQLException, ClassNotFoundException {
+        assertTrue(pacienteService.eliminar(1));
     }
 
     @Test
-    void actualizar() {
+    void actualizar() throws SQLException, ClassNotFoundException {
+        Paciente paciente = new Paciente();
+        paciente.setId(1);
+        paciente.setNombre("Cosme");
+        paciente.setApellido("Fulanito");
+        paciente.setDni("123456789");
+        Boolean pacienteActualizado = pacienteService.actualizar(paciente);
+        assertTrue(pacienteActualizado);
     }
 }
