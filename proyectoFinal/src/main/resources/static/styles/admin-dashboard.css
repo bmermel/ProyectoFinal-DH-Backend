@@ -157,7 +157,13 @@ div.opciones select{
     font-size: 12px;
     height: 30px;
 }
-button#enviar-form{
+button#enviar-form-paciente{
+    margin-left: 0px;
+    font-size: 15px;
+    padding: 15px 60px
+    
+}
+button#enviar-form-odontologo{
     margin-left: 0px;
     font-size: 15px;
     padding: 15px 60px
