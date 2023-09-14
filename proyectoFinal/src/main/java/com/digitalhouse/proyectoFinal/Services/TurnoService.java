@@ -37,7 +37,7 @@ public class TurnoService {
     }
     public void crearTurno(TurnoDTO turnoDTO) {
         Turno turno = new Turno();
-        LocalDate fecha = LocalDate.parse(turnoDTO.getFecha());
+        LocalDate fecha = turnoDTO.getFecha();
         LocalTime hora = LocalTime.parse(turnoDTO.getHora());
         turno.setFecha(fecha);
         turno.setHora(hora);

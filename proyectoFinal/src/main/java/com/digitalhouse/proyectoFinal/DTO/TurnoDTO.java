@@ -4,6 +4,7 @@ import com.digitalhouse.proyectoFinal.Entity.Odontologo;
 import com.digitalhouse.proyectoFinal.Entity.Paciente;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -12,7 +13,7 @@ import java.util.Date;
 @Setter
 public class TurnoDTO {
     private int id;
-    private String fecha;
+    private LocalDate fecha;
     private String hora;
     private String idOdontologo;
     private String idPaciente;
