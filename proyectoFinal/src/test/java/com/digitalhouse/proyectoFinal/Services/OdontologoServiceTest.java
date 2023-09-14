@@ -64,7 +64,7 @@ class OdontologoServiceTest {
     @Test
     void actualizarOdontologo() {
         OdontologoDTO odontologoNuevo = new OdontologoDTO();
-        odontologoNuevo.setId(999999999);
+        odontologoNuevo.setId(1);
         odontologoNuevo.setNombre("Martin");
         odontologoNuevo.setApellido("Lobos");
         odontologoNuevo.setMatricula("M008");

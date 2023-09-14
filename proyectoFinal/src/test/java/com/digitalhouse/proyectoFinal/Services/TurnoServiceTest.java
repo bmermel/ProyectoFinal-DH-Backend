@@ -54,8 +54,8 @@ class TurnoServiceTest {
     void listarTodos() {
         TurnoDTO turno = new TurnoDTO();
         turno.setFecha(LocalDate.now());
-        turno.setIdPaciente(String.valueOf(Paciente.generarPacienteAleatorio().getId()));
-        turno.setIdOdontologo(String.valueOf(Odontologo.generarOdontologoAleatorio().getId()));
+        turno.setIdPaciente("1");
+        turno.setIdOdontologo("2");
         turnoService.crearTurno(turno);
         assertNotNull(turnoService.listarTodos());
     }

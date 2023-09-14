@@ -31,6 +31,7 @@ class PacienteServiceTest {
     @Test
     void guardar() throws SQLException, ClassNotFoundException {
         PacienteDTO paciente = new PacienteDTO();
+        paciente.setId(900);
         paciente.setNombre("Tomas");
         paciente.setApellido("Dozo");
         paciente.setDni("34340133");
@@ -41,26 +42,16 @@ class PacienteServiceTest {
         domicilio.setProvincia("Buenos Aires");
         domicilio.setNumero("123");
         paciente.setDomicilio(domicilio);
-        pacienteService.guardar(paciente);
-        assertNotNull(pacienteService.buscar(paciente.getId()));
+        PacienteDTO pacienteYaGuardado = pacienteService.guardar(paciente);
+        assertNotNull(pacienteService.buscar(900));
 
     }
 
     @Test
     void buscar() {
-        PacienteDTO paciente = new PacienteDTO();
-        paciente.setNombre("Tomas");
-        paciente.setApellido("Dozo");
-        paciente.setDni("34340133");
-
-        DomicilioDTO domicilio = new DomicilioDTO();
-        domicilio.setCalle("Calle falsa 123");
-        domicilio.setLocalidad("CABA");
-        domicilio.setProvincia("Buenos Aires");
-        domicilio.setNumero("123");
-        paciente.setDomicilio(domicilio);
-        pacienteService.buscar(paciente.getId());
-        assertNotNull(pacienteService.buscar(paciente.getId()));
+        //dado que ya tenemos paciente con id 1 creado solamente procedemos a buscarlo yverificar que no sea null
+        Paciente pacientebuscado = pacienteService.buscar(5);
+        assertNotNull(pacientebuscado);
     }
 
     @SneakyThrows
