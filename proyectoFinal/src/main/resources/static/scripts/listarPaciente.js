@@ -24,9 +24,9 @@ window.addEventListener('load',()=>{
 
     }
     function renderizarPacientes(pacientes){
-        ul.innerHTML = "";
+        ul.innerHTML = ""
         pacientes.forEach(paciente =>{
-            ul.innerHTML = `
+            ul.innerHTML += `
             <li class="card-paciente">
                 <div><strong>Nombre: </strong>${paciente.nombre}</div>
                 <div><strong>Apellido: </strong>${paciente.apellido}</div> 

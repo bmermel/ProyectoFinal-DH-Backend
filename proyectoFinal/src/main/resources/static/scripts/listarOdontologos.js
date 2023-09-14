@@ -11,7 +11,7 @@ window.addEventListener('load',()=>{
         const settings ={
             method: "GET",
             headers:{
-                authorization:token
+                authorization: token
             }
         }
 
@@ -26,7 +26,7 @@ window.addEventListener('load',()=>{
     function renderizarOdontologos(odontologos){
         ul.innerHTML = "";
         pacientes.forEach(odontologo =>{
-            ul.innerHTML = `
+            ul.innerHTML += `
             <li class="card-paciente">
                 <div><strong>Nombre: </strong>${odontologo.nombre}</div>
                 <div><strong>Apellido: </strong>${odontologo.apellido}</div> 
