@@ -183,32 +183,40 @@ section.turnos-conteiner{
     flex-direction: column;
 }
 li.turno {
+    list-style-type: none;
     margin-bottom: 10px;
     background-color: #f8f8f8;
     border-radius: 6px;
     padding: 10px;
-  }
-  
-  li div {
+}
+
+
+li div {
     display: flex;
     justify-content: space-between;
     font-size: 18px;
     width: 100%;
     margin: 10px 0px;
-
-  }
-  li div strong {
+}
+li div strong {
     font-weight: bold;
-  }
+}
 
-  button.eliminarTurno{
-    width: 80%;
-    font-size: 12px;
+
+section#listas{
+    width: 100%;
+    align-items: center;
+}
+section#listas button{
+    text-transform: uppercase;
+    width: 600px;
+    font-size: 17px;
     background: #1fb5bf;
     border: none;
     border-radius: 5px;
-    padding: 10px 25px;
+    padding: 20px 25px;
     color: white;
     margin: 30px 30px;
     box-shadow: inset 0px 1px 0px rgba(255,255,255,0.2);
+
 }

@@ -1,0 +1,22 @@
+
+ul.render{
+    width: 70%;
+}
+
+ul.render li.card-paciente{
+    list-style-type: none;
+    margin-bottom: 10px;
+    background-color: #dfdfdf;
+    border-radius: 6px;
+    padding: 10px;
+}
+ul.render li div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    width: 100%;
+    margin: 10px 0px;
+}
+ul.render li div strong {
+    font-weight: bold;
+}

@@ -85,12 +85,9 @@ btnCrearPaciente.addEventListener("click", (e) => {
       fetch(url,settings)
       .then(res => console.log(res))
       .then(data=>{
-        console.log(data)
-        consultarTurnos();
-        
+        console.log(data) 
       })   
       console.log("Datos enviados");
-      this.location.reload()
     }
     
     
@@ -107,11 +104,11 @@ btnCrearOdontologo.addEventListener("click", (e)=>{
     e.preventDefault();
     const url = urlOdontologos + "/crear"
     const nombreOdo = document.getElementById('nombreOdo').value;
-    const apellidoOdo = document.getElementById('select-odontologo').value;
-    const matriculaOdo = document.getElementById("fecha").value;
+    const apellidoOdo = document.getElementById('apellidoOdo').value;
+    const matriculaOdo = document.getElementById("matricula").value;
   
 
-    if(odontologo == "none" || paciente == "none"){
+    if((nombreOdo == "" || nombreOdo == null)|| (apellidoOdo == "" || apellidoOdo == null)|| (matriculaOdo  == "" || matriculaOdo  == null)){
       alert("Debe seleccionar un odontologo y un paciente para crear un turno")
     }else{
       let payload = {
@@ -136,11 +133,8 @@ btnCrearOdontologo.addEventListener("click", (e)=>{
       .then(res => console.log(res))
       .then(data=>{
         console.log(data)
-        consultarTurnos();
-        
       })   
       console.log("Datos enviados");
-      this.location.reload()
     }
     
     
