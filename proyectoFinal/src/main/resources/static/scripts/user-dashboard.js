@@ -26,7 +26,13 @@ window.addEventListener("load", function (){
   function consultarTurnos(){
     const url = urlTurnos + "/listar";
     const ulTurnos = document.getElementById("turnos")
-    fetch(url)
+    const settings ={
+      method: "GET",
+      headers:{
+          authorization: token
+      }
+  }
+    fetch(url, settings)
       .then((res) => res.json())
       .then(turnos =>{
         turnos.forEach(turno =>{ 
@@ -70,7 +76,10 @@ window.addEventListener("load", function (){
         const url = `${urlTurnos}/borrar/${id}`
 
         const settings = {
-          method: 'DELETE'
+          method: 'DELETE',
+          headers:{
+            authorization: token
+          }
         }
 
         fetch(url, settings)
@@ -88,6 +97,13 @@ window.addEventListener("load", function (){
     const selectPacientes = document.getElementById("select-paciente");
     const url = urlPacientes + "/listar";
     console.log(url);
+    const settings ={
+      method: "GET",
+      headers:{
+          authorization: token
+      }
+    }
+
     fetch(url)
       .then((res) => res.json())
       .then((pacientes) => {

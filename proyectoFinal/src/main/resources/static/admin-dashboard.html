@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/admin-dashboard.css">
+    <link rel="stylesheet" href="styles/admin-dashboard.css">
     <title>Admin Dashboard</title>
     <script src="scripts/admin-dashboard.js"></script>
 </head>
@@ -19,7 +19,7 @@
         <section id="main">
        <section class="conteiner-nuevo-turno" id="cont-nuevo-paciente">
         <button id="nuevo-paciente">NUEVO PACIENTE</button>
-        <form action="" class="form-nuevo-paciente border" id="form-nuevo-paciente">
+        <form action="" class="form-nuevo-paciente border hidden" id="form-nuevo-paciente">
             <div class="opciones">
                 <label for="inputNombrePaciente">Nombre:</label>
                 <input name="inputnombre" id="inputNombrePaciente">
@@ -49,12 +49,12 @@
                 <label for="provincia">Provincia:</label>
                 <input name="provincia" id="provincia">
             </div>            
-            <button id="enviar-form">CREAR</button>
+            <button id="enviar-form-paciente">CREAR</button>
         </form>
     </section>
     <section class="conteiner-nuevo-turno" id="cont-nuevo-odontologo">
         <button id="nuevo-odontologo">NUEVO ODONTOLOGO</button>
-        <form action="" class="form-nuevo-odontologo border" id="form-nuevo-odontologo">
+        <form action="" class="form-nuevo-odontologo border hidden" id="form-nuevo-odontologo">
             <div class="opciones">
                 <label for="inputNombreOdontologo">Nombre:</label>
                 <input name="inputnombre" id="inputNombreOdontologo">
@@ -62,9 +62,6 @@
             <div class="opciones">
                 <label for="apellido">Apellido:</label>
                 <input name="apellido" id="apellidoOdo">           
-
-                <label for="apellidoOdontologo">Apellido:</label>
-                <input name="apellido" id="apellidoOdontologo">
             </div>
             <div class="opciones">
                 <label for="matricula">Matricula:</label>

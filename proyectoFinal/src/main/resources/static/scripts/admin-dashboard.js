@@ -1,7 +1,7 @@
 window.addEventListener('load',()=>{
 
 //BOTONES Y FORMULARIO
-    const btnNuevoPaciente = document.querySelector("#nuevo-paciente");
+    const btnPaciente = document.querySelector("#nuevo-paciente")
     const btnNuevoOdontologo = document.querySelector("#nuevo-odontologo") 
     const formPaciente = document.querySelector("#form-nuevo-paciente");
     const formOdontologo = document.querySelector("#form-nuevo-odontologo");
@@ -12,12 +12,23 @@ window.addEventListener('load',()=>{
     const urlPacientes = "http://localhost:8080/pacientes";
     const urlOdontologos = "http://localhost:8080/odontologos";
 
+    const btnListaPaciente = document.querySelector("#btn-pa-list")
+    const btnListaOdontologos = document.querySelector("#btn-odo-list")
 
+    btnListaPaciente.addEventListener("click",()=>{
+      let win = window.open("http://localhost:8080/listaPacientes", '_blank');
+        win.focus();
+    })
+
+    btnListaOdontologos.addEventListener("click", ()=>{
+      let win = window.open("http://localhost:8080/listaOdontologos", '_blank');
+        win.focus();
+    })
 //=========================================================================================================
 //MOSTRAR O ESCONDER FORMULARIOS
 
 
-    btnNuevoPaciente.addEventListener('click', ()=>{
+    btnPaciente.addEventListener('click',()=>{
         console.log('click paciente')
         if (formPaciente.classList.contains("flex")) {
             formPaciente.classList.remove("flex");
@@ -77,6 +88,7 @@ btnCrearPaciente.addEventListener("click", (e) => {
           method: "POST",
           body:JSON.stringify(payload),
           headers:{
+            authorization:token,
             "Content-Type": "application/json"
           }
       }
@@ -124,6 +136,7 @@ btnCrearOdontologo.addEventListener("click", (e)=>{
           method: "POST",
           body:JSON.stringify(payload),
           headers:{
+            authorization:token,
             "Content-Type": "application/json"
           }
       }

@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 .requestMatchers(new AntPathRequestMatcher("/login.html")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/admin-dashboard.html")).permitAll()
                                 .requestMatchers(new AntPathRequestMatcher("/user-dashboard.html")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/listaOdontologos.html")).permitAll()
+                                .requestMatchers(new AntPathRequestMatcher("/listaPacientes.html")).permitAll()
                                 .anyRequest().permitAll()
                 )
                 .sessionManagement(sessionManager->
