@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/user-dashboard.css">
+    <link rel="stylesheet" href="./styles/admin-dashboard.css">
     <title>Document</title>
-    <script src="scripts/user-dashboard.js"></script>
+    <script src="scripts/admin-dashboard.js"></script>
 </head>
 <body>
     <head>
@@ -15,31 +15,63 @@
         </nav>
     </head>
     <main>
-        <h1>GESTOR DE ODONTOLOGOS</h1>
-       <section class="conteiner-nuevo-turno" id="cont-nuevo-turno">
-        <button id="nuevo-turno">NUEVO ODONTOLOGO</button>
-        <form action="" class="form-nuevo-turno border" id="form-nuevo-turno">
+        <h1>GESTOR DEL ADMINISTRADOR</h1>
+        <section id="main">
+       <section class="conteiner-nuevo-turno" id="cont-nuevo-paciente">
+        <button id="nuevo-paciente">NUEVO PACIENTE</button>
+        <form action="" class="form-nuevo-paciente border" id="form-nuevo-paciente">
             <div class="opciones">
-                <label for="select-odontologo">Paciente:</label>
-                <select name="select-odontologo" id="select-odontologo">
-                    <!-- Renderizar aca adentro lista de odontologo -->
-                    <option value="none">Seleccione un paciente:</option>
-                </select><br>
+                <label for="nombre">Nombre:</label>
+                <input name="inputnombre" id="inputnombre">
             </div>
             <div class="opciones">
-                <label for="select-odontologo">Odontologo:</label>
-                <select name="select-odontologo" id="select-paciente">
-                    <!-- Renderizar aca adentro lista de pacientes -->
-                    <option value="none">Seleccione un odontologo:</option>
-                </select>
+                <label for="apellido">Apellido:</label>
+                <input name="apellido" id="apellido">           
             </div>
             <div class="opciones">
-                <label for="fecha">selecione una fecha:</label>
-                <input type="date" id="fecha" name="fecha" value="" min="2023-01-01" max="2023-12-31" />
+                <label for="dni">Dni:</label>
+                <input name="dni" id="dni">           
+            </div>    
+            <h4>Domicilio</h4>        
+            <div class="opciones">
+                <label for="calle">Calle:</label>
+                <input name="calle" id="calle">
             </div>
+            <div class="opciones">
+                <label for="numero">Numero:</label>
+                <input name="numero" id="numero">
+            </div>
+            <div class="opciones">
+                <label for="localidad">Localidad:</label>
+                <input name="localidad" id="localidad">
+            </div>
+            <div class="opciones">
+                <label for="provincia">Provincia:</label>
+                <input name="provincia" id="provincia">
+            </div>            
             <button id="enviar-form">CREAR</button>
         </form>
-       </>
+    </section>
+    <section class="conteiner-nuevo-turno" id="cont-nuevo-odontologo">
+        <button id="nuevo-odontologo">NUEVO ODONTOLOGO</button>
+        <form action="" class="form-nuevo-odontologo border" id="form-nuevo-odontologo">
+            <div class="opciones">
+                <label for="nombre">Nombre:</label>
+                <input name="inputnombre" id="inputnombre">
+            </div>
+            <div class="opciones">
+                <label for="apellido">Apellido:</label>
+                <input name="apellido" id="apellido">           
+            </div>
+            <div class="opciones">
+                <label for="matricula">Matricula:</label>
+                <input name="matricula" id="matricula">           
+            </div>    
+            
+            <button id="enviar-form">CREAR</button>
+        </form>
+    </section>
+</section>
        <div class="conteine-lista">
        </div>      
     </main>
