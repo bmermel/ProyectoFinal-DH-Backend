@@ -90,7 +90,6 @@ function fetchApiLogin(url,payload) {
             const rol = payloadTraducido.Rol.authority;
             if(rol === "USER"){
                 location.href = '/user-dashboard.html'
-                console.log(rol);
             }else if(rol === "ADMIN"){
                 location.href = '/admin-dashboard.html'
                 console.log(rol);

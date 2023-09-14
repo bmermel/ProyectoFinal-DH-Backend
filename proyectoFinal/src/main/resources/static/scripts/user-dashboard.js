@@ -1,4 +1,5 @@
 window.addEventListener("load", function (){
+  redireccionar();
 
   const urlPacientes = "http://localhost:8080/pacientes";
   const urlOdontologos = "http://localhost:8080/odontologos";
@@ -167,9 +168,9 @@ window.addEventListener("load", function (){
   
 
 
-
   renderizarPacientes();
   renderizarOdontologos();
   consultarTurnos();
+  redireccionar();
 
 });
